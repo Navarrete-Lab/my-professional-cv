@@ -18,23 +18,13 @@
         }
         body {
             font-family: 'Lato', sans-serif;
-            /* Base background color for the breathing effect */
-            background-color: #F0F2F5;
-            /* Apply the breathing animation */
-            animation: breathingBackground 10s ease-in-out infinite alternate; /* Adjusted timing for a more noticeable "beat" */
+            background-color: #F0F2F5; /* A slightly cooler, professional light gray */
             color: #333F4D; /* Darker, more professional text color */
             line-height: 1.7; /* Increased line height for readability */
             padding-top: 70px; /* Space for fixed navigation bar */
             position: relative;
             z-index: 0;
             overflow-x: hidden; /* Prevent horizontal scroll due to animations */
-        }
-
-        /* Keyframes for the subtle breathing background animation */
-        @keyframes breathingBackground {
-            0% { background-color: #F0F2F5; } /* Start color (light gray) */
-            50% { background-color: #E0E6ED; } /* More distinct middle color for the "beat" */
-            100% { background-color: #F0F2F5; } /* Return to start color */
         }
 
         /* Global CRM background for the entire page */
@@ -134,14 +124,6 @@
             border-bottom: 2px solid #3498DB;
             overflow: hidden;
         }
-
-        /* Keyframes for the image opacity pulse */
-        @keyframes imagePulse {
-            0% { opacity: 0.05; } /* Slightly more visible start */
-            50% { opacity: 0.15; } /* More visible peak */
-            100% { opacity: 0.05; } /* Return to start */
-        }
-
         .intro-section::before { /* Background image and its effects */
             content: '';
             position: absolute;
@@ -157,7 +139,6 @@
             background-blend-mode: overlay; /* Blend with the gradient */
             filter: brightness(0.9); /* Slightly less dark, let image show more */
             z-index: 0;
-            animation: imagePulse 10s ease-in-out infinite alternate; /* Apply the new image pulse animation */
         }
 
         /* Keyframes for subtle gradient animation */
@@ -174,7 +155,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(52, 152, 219, 0.2) 0%, rgba(44, 62, 80, 0.3) 50%, rgba(52, 152, 219, 0.2) 100%); /* Subtle gradient */
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.853) 0%, rgba(3, 12, 20, 0.83) 50%, rgba(16, 66, 99, 0.4) 100%); /* Subtle gradient */
             background-size: 200% 200%; /* Larger background for animation */
             animation: gradientShift 15s ease infinite; /* Apply animation */
             z-index: 1;
@@ -364,25 +345,25 @@
             margin-top: 1.5rem;
         }
         .skill-category-block {
-            background-color: #F8F9FA;
-            border: 1px solid #DDE1E6;
-            border-radius: 0.75rem;
-            padding: 2rem;
+            background-color: #F8F9FA; /* Very light background for skill categories */
+            border: 1px solid #DDE1E6; /* Subtle border */
+            border-radius: 0.75rem; /* More rounded */
+            padding: 2rem; /* More padding */
             text-align: center;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* Deeper shadow */
             flex: 1 1 calc(50% - 2rem);
-            max-width: 450px;
+            max-width: 450px; /* Max width for each skill block */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .skill-category-block:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+            transform: translateY(-8px); /* More pronounced lift effect */
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2); /* Stronger shadow on hover */
         }
         .skill-category-block .category-title {
             font-weight: 700;
             color: #3498DB;
-            font-size: 1.3rem;
-            margin-bottom: 1.2rem;
+            font-size: 1.3rem; /* Larger title */
+            margin-bottom: 1.2rem; /* More space below title */
             text-transform: uppercase;
             letter-spacing: 0.08em;
         }
@@ -390,30 +371,30 @@
             list-style: none;
             padding: 0;
             margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            width: 100%;
+            display: flex; /* Enable flex for items */
+            flex-direction: column; /* Stack items vertically */
+            align-items: flex-start; /* Align items to the start */
+            width: 100%; /* Take full width of parent */
         }
         .skill-category-block .skill-item-list li {
-            margin-bottom: 1rem;
-            font-size: 1rem;
+            margin-bottom: 1rem; /* More space between skill items */
+            font-size: 1rem; /* Standard font size for skill items */
             color: #4b5563;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            width: 100%;
+            text-align: left; /* Align text to left */
+            display: flex; /* Enable flex for content within li */
+            flex-direction: column; /* Stack icon/name and bar vertically */
+            align-items: flex-start; /* Align content to start */
+            width: 100%; /* Take full width */
         }
         .skill-item-list li .skill-info {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.5rem;
+            gap: 0.75rem; /* Space between icon and text */
+            margin-bottom: 0.5rem; /* Space between info and bar */
         }
         .skill-item-list li .skill-icon {
-            font-size: 1.5rem;
-            color: #556270;
+            font-size: 1.5rem; /* Size of the skill icon */
+            color: #556270; /* Color of the skill icon */
         }
         .skill-item-list li .skill-name {
             font-weight: 600;
@@ -423,23 +404,23 @@
         /* Skill Level Bar Styles */
         .skill-level-bar {
             width: 100%;
-            background-color: #E0E6ED;
-            border-radius: 0.5rem;
-            height: 10px;
+            background-color: #E0E6ED; /* Light gray background for the bar */
+            border-radius: 0.5rem; /* Rounded corners for the bar */
+            height: 10px; /* Height of the bar */
             overflow: hidden;
             position: relative;
         }
 
         .skill-level-fill {
             height: 100%;
-            background-color: #3498DB;
+            background-color: #3498DB; /* Blue fill color */
             border-radius: 0.5rem;
-            transition: width 1s ease-out;
+            transition: width 1s ease-out; /* Smooth animation for fill */
             position: relative;
         }
 
         .skill-level-fill::after {
-            content: attr(data-level-text);
+            content: attr(data-level-text); /* Display level text */
             position: absolute;
             right: 5px;
             top: 50%;
@@ -447,23 +428,23 @@
             color: #ffffff;
             font-size: 0.75rem;
             font-weight: 700;
-            opacity: 0;
+            opacity: 0; /* Hidden by default */
             transition: opacity 0.3s ease-in-out;
             text-shadow: 0 0 3px rgba(0,0,0,0.3);
         }
 
         .skill-level-bar:hover .skill-level-fill::after {
-            opacity: 1;
+            opacity: 1; /* Show on hover */
         }
 
 
         /* Trainings & Certifications Section - New Layout */
         .certifications-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid columns */
+            gap: 1.5rem; /* Gap between cards */
             margin-top: 1.5rem;
-            justify-content: center;
+            justify-content: center; /* Center items in the grid */
         }
 
         .certification-card {
@@ -473,29 +454,29 @@
             padding: 1.5rem;
             text-align: center;
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s ease 0.3s, filter 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s ease 0.3s, filter 0.3s ease; /* Added filter transition */
+            position: relative; /* Needed for absolute positioning of overlay */
+            overflow: hidden; /* Hide overflow of overlay */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 180px;
+            height: 180px; /* Fixed height for consistent card size */
             cursor: pointer;
-            z-index: 1;
+            z-index: 1; /* Default z-index */
         }
 
         .certification-card:hover {
-            transform: translateY(-10px) scale(1.05) perspective(1000px) rotateX(2deg);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-            filter: brightness(1.05);
-            z-index: 10;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s ease 0s, filter 0.3s ease;
+            transform: translateY(-10px) scale(1.05) perspective(1000px) rotateX(2deg); /* Added 3D tilt */
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2); /* Stronger shadow */
+            filter: brightness(1.05); /* Subtle brightness increase */
+            z-index: 10; /* Bring hovered card to the front immediately */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s ease 0s, filter 0.3s ease; /* z-index changes immediately */
         }
 
         .certification-card .card-content {
             position: relative;
-            z-index: 2;
+            z-index: 2; /* Ensure content is above the logo overlay */
             transition: opacity 0.3s ease-in-out;
         }
 
@@ -507,34 +488,34 @@
             height: 100%;
             background-repeat: no-repeat;
             background-position: center;
-            background-size: 0px;
+            background-size: 0px; /* Start hidden */
             opacity: 0;
             filter: grayscale(100%);
-            transition: all 0.3s ease-in-out;
-            z-index: 1;
+            transition: all 0.3s ease-in-out; /* Faster transition for logo */
+            z-index: 1; /* Below content */
         }
 
         /* Hover effect for the logo overlay */
         .certification-card:hover .cert-logo-overlay {
-            background-size: 100px;
-            opacity: 0.2;
-            filter: grayscale(0%);
+            background-size: 100px; /* Logo appears */
+            opacity: 0.2; /* More visible */
+            filter: grayscale(0%); /* Full color */
         }
 
         .certification-card .cert-title {
             font-weight: 700;
             color: #2C3E50;
-            font-size: 1.15rem;
+            font-size: 1.15rem; /* Slightly larger title */
             margin-bottom: 0.5rem;
         }
         .certification-card .cert-title a {
-            color: inherit;
-            text-decoration: none;
+            color: inherit; /* Inherit color from parent */
+            text-decoration: none; /* Remove underline by default */
             transition: color 0.3s ease;
         }
         .certification-card .cert-title a:hover {
-            color: #3498DB;
-            text-decoration: underline;
+            color: #3498DB; /* Change color on hover */
+            text-decoration: underline; /* Add underline on hover */
         }
 
         .certification-card .cert-subtitle {
@@ -545,27 +526,27 @@
 
         .certification-card .cert-date {
             font-size: 0.9rem;
-            color: #7F8C8D;
+            color: #7F8C8D; /* Softer gray for date */
             font-weight: 600;
         }
 
         /* Languages Section - New Layout */
         .languages-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.2rem;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive grid columns, smaller cards */
+            gap: 1.2rem; /* Gap between cards */
             margin-top: 1.5rem;
-            justify-content: center;
+            justify-content: center; /* Center items in the grid */
         }
 
         .language-card {
             background-color: #F8F9FA;
             border: 1px solid #DDE1E6;
             border-radius: 0.75rem;
-            padding: 1rem;
+            padding: 1rem; /* Smaller padding */
             text-align: center;
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease; /* Added filter transition */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -573,25 +554,25 @@
         }
 
         .language-card:hover {
-            transform: translateY(-5px) perspective(1000px) rotateY(2deg);
+            transform: translateY(-5px) perspective(1000px) rotateY(2deg); /* Added 3D tilt */
             box-shadow: 0 8px 18px rgba(0,0,0,0.15);
-            filter: brightness(1.05);
+            filter: brightness(1.05); /* Subtle brightness increase */
         }
 
         .language-card .language-flag {
-            width: 45px;
+            width: 45px; /* Size of the flag */
             height: 45px;
-            border-radius: 50%;
+            border-radius: 50%; /* Make flags circular */
             object-fit: cover;
             margin-bottom: 0.75rem;
-            border: 1px solid #BDC3C7;
+            border: 1px solid #BDC3C7; /* Subtle border around flag */
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .language-card .item-title {
             font-weight: 700;
             color: #2C3E50;
-            font-size: 1.1rem;
+            font-size: 1.1rem; /* Slightly smaller title for language */
             margin-bottom: 0.2rem;
         }
 
@@ -603,10 +584,10 @@
         /* Education Section - New Layout */
         .education-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Two columns on larger screens */
+            gap: 1.5rem; /* Space between cards */
             margin-top: 1.5rem;
-            justify-content: center;
+            justify-content: center; /* Center the grid items */
         }
 
         .education-card {
@@ -616,36 +597,36 @@
             padding: 1.5rem;
             text-align: center;
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s ease 0.3s, filter 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s ease 0.3s, filter 0.3s ease; /* Added filter transition */
+            position: relative; /* Needed for absolute positioning of overlay */
+            overflow: hidden; /* Hide overflow of overlay */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 200px;
+            height: 200px; /* Slightly taller for education cards */
             cursor: pointer;
-            z-index: 1;
+            z-index: 1; /* Default z-index */
         }
 
         .education-card:hover {
-            transform: translateY(-10px) scale(1.05) perspective(1000px) rotateX(2deg);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-            filter: brightness(1.05);
-            z-index: 10;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s ease 0s, filter 0.3s ease;
+            transform: translateY(-10px) scale(1.05) perspective(1000px) rotateX(2deg); /* Added 3D tilt */
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2); /* Stronger shadow */
+            filter: brightness(1.05); /* Subtle brightness increase */
+            z-index: 10; /* Bring hovered card to the front immediately */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s ease 0s, filter 0.3s ease; /* z-index changes immediately */
         }
 
         .education-card .card-content {
             position: relative;
-            z-index: 2;
-            display: flex;
+            z-index: 2; /* Ensure content is above the logo overlay */
+            display: flex; /* Use flexbox for internal content alignment */
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100%;
-            width: 100%;
-            padding: 0.5rem;
+            height: 100%; /* Take full height of parent */
+            width: 100%; /* Take full width of parent */
+            padding: 0.5rem; /* Add some padding to content to prevent text touching edges */
         }
 
         .education-card .edu-logo-overlay {
@@ -656,27 +637,27 @@
             height: 100%;
             background-repeat: no-repeat;
             background-position: center;
-            background-size: 0px;
+            background-size: 0px; /* Start hidden */
             opacity: 0;
             filter: grayscale(100%);
-            transition: all 0.3s ease-in-out;
-            z-index: 1;
+            transition: all 0.3s ease-in-out; /* Faster transition for logo */
+            z-index: 1; /* Below content */
         }
 
         /* Hover effect for the logo overlay */
         .education-card:hover .edu-logo-overlay {
             /* Specific adjustments for the ULEAM logo, which is wider */
-            background-size: 120px;
-            opacity: 0.15;
-            filter: grayscale(0%);
+            background-size: 120px; /* Increased size for wider logos like ULEAM */
+            opacity: 0.15; /* Adjusted opacity for subtlety */
+            filter: grayscale(0%); /* Full color */
         }
 
 
         .education-card .edu-icon {
-            font-size: 2.8rem;
-            color: #3498DB;
-            margin-bottom: 0.75rem;
-            position: relative;
+            font-size: 2.8rem; /* Larger icon */
+            color: #3498DB; /* Accent color for icon */
+            margin-bottom: 0.75rem; /* Reduced margin for better spacing */
+            position: relative; /* Ensure icon is above overlay */
             z-index: 2;
         }
 
@@ -684,8 +665,8 @@
             font-size: 0.95rem;
             font-weight: 700;
             color: #556270;
-            margin-bottom: 0.25rem;
-            position: relative;
+            margin-bottom: 0.25rem; /* Reduced margin for better spacing */
+            position: relative; /* Ensure text is above overlay */
             z-index: 2;
         }
 
@@ -693,30 +674,30 @@
             font-weight: 700;
             color: #2C3E50;
             font-size: 1.25rem;
-            margin-bottom: 0.35rem;
-            position: relative;
+            margin-bottom: 0.35rem; /* Reduced margin for better spacing */
+            position: relative; /* Ensure text is above overlay */
             z-index: 2;
         }
 
         .education-card .edu-subtitle {
             font-size: 1.05rem;
             color: #4b5563;
-            margin-bottom: 0.5rem;
-            position: relative;
+            margin-bottom: 0.5rem; /* Reduced margin for better spacing */
+            position: relative; /* Ensure text is above overlay */
             z-index: 2;
         }
 
         .education-card .edu-location {
             font-size: 0.95rem;
             color: #6b7280;
-            position: relative;
+            position: relative; /* Ensure text is above overlay */
             z-index: 2;
         }
 
         /* Miscellaneous Section - New Layout */
         .miscellaneous-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Flexible grid for misc items */
             gap: 1.5rem;
             margin-top: 1.5rem;
             justify-content: center;
@@ -729,7 +710,7 @@
             padding: 1.5rem;
             text-align: center;
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease; /* Added filter transition */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -737,9 +718,9 @@
         }
 
         .miscellaneous-card:hover {
-            transform: translateY(-5px) perspective(1000px) rotateY(-2deg);
+            transform: translateY(-5px) perspective(1000px) rotateY(-2deg); /* Added 3D tilt */
             box-shadow: 0 8px 18px rgba(0,0,0,0.15);
-            filter: brightness(1.05);
+            filter: brightness(1.05); /* Subtle brightness increase */
         }
 
         .miscellaneous-card .misc-icon {
@@ -758,38 +739,38 @@
         footer {
             background-color: #2C3E50;
             color: #ECF0F1;
-            padding: 2rem 2.5rem;
+            padding: 2rem 2.5rem; /* More padding */
             text-align: center;
-            font-size: 0.95rem;
+            font-size: 0.95rem; /* Slightly larger footer text */
         }
         footer .social-links a {
             color: #3498DB;
-            margin: 0 1rem;
-            font-size: 1.4rem;
+            margin: 0 1rem; /* More space for social icons */
+            font-size: 1.4rem; /* Larger social icons */
             transition: color 0.3s ease, transform 0.2s ease;
         }
         footer .social-links a:hover {
             color: #ffffff;
-            transform: translateY(-3px);
+            transform: translateY(-3px); /* Subtle lift on hover */
         }
 
         /* Work Experience Timeline */
         .timeline-container {
             position: relative;
-            padding-left: 30px;
+            padding-left: 30px; /* Space for the line and dots */
             margin-left: auto;
             margin-right: auto;
-            max-width: 800px;
+            max-width: 800px; /* Constrain timeline width */
         }
 
         .timeline-container::before {
             content: '';
             position: absolute;
-            left: 15px;
+            left: 15px; /* Position the line */
             top: 0;
             bottom: 0;
-            width: 3px;
-            background-color: #BDC3C7;
+            width: 3px; /* Thickness of the line */
+            background-color: #BDC3C7; /* Light gray line */
             border-radius: 2px;
         }
 
@@ -797,50 +778,50 @@
             position: relative;
             background-color: #ffffff;
             border-radius: 0.75rem;
-            padding: 1.5rem 2rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            padding: 1.5rem 2rem; /* Adjusted padding for better visual balance */
+            margin-bottom: 2.5rem; /* More space between entries */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Slightly stronger initial shadow */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            z-index: 1;
-            border: 1px solid #EAECEF;
-            overflow: hidden;
+            z-index: 1; /* Ensure cards are above the line */
+            border: 1px solid #EAECEF; /* Subtle border */
+            overflow: hidden; /* Ensure pseudo-element doesn't overflow */
         }
 
         .job-entry:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            transform: translateY(-8px); /* More pronounced lift */
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15); /* Stronger shadow on hover */
         }
 
-        .job-entry::after {
+        .job-entry::after { /* The dot on the timeline */
             content: '';
             position: absolute;
-            left: -25px;
-            top: 1.5rem;
+            left: -25px; /* Position relative to the card, aligns with the line */
+            top: 1.5rem; /* Align with the top of the card */
             width: 18px;
             height: 18px;
-            background-color: #3498DB;
-            border: 3px solid #ffffff;
+            background-color: #3498DB; /* Accent color for the dot */
+            border: 3px solid #ffffff; /* White border around the dot */
             border-radius: 50%;
-            z-index: 2;
-            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.3);
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            z-index: 2; /* Ensure dot is on top */
+            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.3); /* Subtle glow around the dot */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for dot */
         }
 
         /* Watermarks (adjust position based on new padding) */
         .job-entry::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; /* Cover the whole block */
+            left: 0; /* Cover the whole block */
+            width: 100%; /* Cover the whole block */
+            height: 100%; /* Cover the whole block */
             background-repeat: no-repeat;
             background-position: center;
-            background-size: cover;
-            opacity: 0.05;
-            filter: grayscale(100%) brightness(1.1);
-            transition: all 0.4s ease-in-out;
-            z-index: -1;
+            background-size: cover; /* Make image cover the entire block */
+            opacity: 0.05; /* Very subtle by default */
+            filter: grayscale(100%) brightness(1.1); /* Start grayscale */
+            transition: all 0.4s ease-in-out; /* Smooth transition for all properties */
+            z-index: -1; /* Behind content */
         }
 
         /* Specific company watermarks and hover effects */
@@ -848,48 +829,42 @@
             background-image: url('https://www.webspotting.de/wp-content/uploads/2024/01/westwing-se-600.png');
         }
         .job-entry.westwing-watermark:hover::before {
-            opacity: 0.15;
-            filter: grayscale(0%);
+            opacity: 0.15; /* More visible on hover */
+            filter: grayscale(0%); /* Full color on hover */
         }
 
         .job-entry.explorandes-watermark::before {
             background-image: url('https://s3-eu-west-1.amazonaws.com/tpd/logos/5abbd0de719bac0001a90542/0x0.png');
         }
         .job-entry.explorandes-watermark:hover::before {
-            opacity: 0.15;
-            filter: grayscale(0%);
+            opacity: 0.15; /* More visible on hover */
+            filter: grayscale(0%); /* Full color on hover */
         }
 
         .job-entry.casanuestra-watermark::before {
             background-image: url('https://www.casanuestraperu.com/wp-content/uploads/2023/10/cn_logo_24-1.png');
         }
         .job-entry.casanuestra-watermark:hover::before {
-            opacity: 0.15;
-            filter: grayscale(0%);
+            opacity: 0.15; /* More visible on hover */
+            filter: grayscale(0%); /* Full color on hover */
         }
 
-        /* Fallback for other job entries without specific logos (no hover effect for these) */
-        .job-entry:not([class*="-watermark"])::before {
-            background-image: url('https://placehold.co/100x100/eeeeee/aaaaaa?text=Company');
-            opacity: 0.12;
-            filter: grayscale(100%) brightness(1.1);
-            transition: none;
-        }
+
 
         /* Key achievements styling */
         .item-description h4 {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-            font-weight: 700;
+            gap: 0.5rem; /* Space between text and icon */
+            font-weight: 700; /* Make it bolder */
             color: #2C3E50;
-            margin-top: 1.5rem;
+            margin-top: 1.5rem; /* More space above achievements */
             margin-bottom: 0.75rem;
-            font-size: 1.1rem;
+            font-size: 1.1rem; /* Slightly larger achievement heading */
         }
         .item-description h4 i {
-            color: #27AE60;
+            color: #27AE60; /* Green color for achievement icon */
             font-size: 1.2em;
         }
 
@@ -901,21 +876,21 @@
         }
         .content-list .item-description ul li {
             text-align: left;
-            margin-bottom: 0.7rem;
+            margin-bottom: 0.7rem; /* Increased space between bullet points */
             position: relative;
-            padding-left: 2rem;
-            font-size: 1rem;
+            padding-left: 2rem; /* More space for the checkmark */
+            font-size: 1rem; /* Consistent font size */
             color: #374151;
         }
         .content-list .item-description ul li::before {
             content: '\f058'; /* Font Awesome check-circle icon */
             font-family: 'Font Awesome 5 Free';
             font-weight: 900;
-            color: #27AE60;
+            color: #27AE60; /* Green checkmark */
             position: absolute;
             left: 0;
-            top: 0.05rem;
-            font-size: 1.1em;
+            top: 0.05rem; /* Fine-tune vertical alignment */
+            font-size: 1.1em; /* Slightly larger icon */
         }
 
 
@@ -927,7 +902,7 @@
             .main-wrapper {
                 margin: 0.5rem;
                 border-radius: 0;
-                box-shadow: none;
+                box-shadow: none; /* Lighter shadow on mobile */
             }
             .main-nav ul {
                 flex-direction: column;
@@ -977,13 +952,13 @@
                 padding: 0;
             }
             .content-list .item-description ul {
-                margin-left: 1.5rem;
+                margin-left: 1.5rem; /* Adjust indent for mobile */
             }
             .content-list .item-description ul li {
-                padding-left: 1.8rem;
+                padding-left: 1.8rem; /* Adjust padding for mobile */
             }
             .content-list .item-description ul li::before {
-                top: 0.2rem;
+                top: 0.2rem; /* Adjust vertical alignment for mobile */
             }
             .skills-grid {
                 flex-direction: column;
@@ -991,7 +966,7 @@
                 gap: 1rem;
             }
             .skill-category-block {
-                width: 90%;
+                width: 90%; /* Adjust width for mobile */
                 max-width: 350px;
                 padding: 1.5rem;
             }
@@ -999,29 +974,31 @@
                 font-size: 1.1rem;
             }
             .skill-item-list li {
-                flex-direction: column;
-                align-items: flex-start;
+                flex-direction: column; /* Stack icon/name and bar vertically */
+                align-items: flex-start; /* Align content to start */
             }
             .job-entry::before {
+                /* On mobile, keep it as a subtle watermark, not full cover */
                 width: 80px;
                 height: 80px;
                 right: 0.5rem;
-                background-size: contain;
+                background-size: contain; /* Revert to contain for mobile watermark */
                 opacity: 0.12;
                 filter: grayscale(100%) brightness(1.1);
-                transition: none;
+                transition: none; /* No hover transition for mobile watermark */
             }
             .job-entry:hover::before {
+                /* Disable hover effects for mobile if it's a small watermark */
                 opacity: 0.12;
                 filter: grayscale(100%) brightness(1.1);
                 background-size: contain;
             }
             .certifications-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Stack cards on mobile */
                 gap: 1rem;
             }
             .languages-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Stack language cards on mobile */
                 gap: 1rem;
             }
             .language-card {
@@ -1030,7 +1007,7 @@
                 padding: 1.2rem;
             }
             .education-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Stack education cards on mobile */
                 gap: 1rem;
             }
             .education-card {
@@ -1039,7 +1016,7 @@
                 padding: 1.5rem;
             }
             .miscellaneous-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Stack misc cards on mobile */
                 gap: 1rem;
             }
             .miscellaneous-card {
@@ -1049,20 +1026,20 @@
             }
             /* Timeline adjustments for mobile */
             .timeline-container {
-                padding-left: 20px;
+                padding-left: 20px; /* Adjust for smaller screens */
             }
             .timeline-container::before {
                 left: 10px;
             }
             .job-entry::after {
-                left: -15px;
+                left: -15px; /* Adjust dot position for smaller screens */
                 width: 14px;
                 height: 14px;
                 border: 2px solid #ffffff;
                 box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
             }
             .job-entry {
-                padding: 1rem 1.5rem;
+                padding: 1rem 1.5rem; /* Adjust padding */
                 margin-bottom: 2rem;
             }
             footer {
@@ -1077,7 +1054,7 @@
                 background-color: #fff;
             }
             body::before {
-                opacity: 0.01;
+                opacity: 0.01; /* Even lighter for print */
             }
             .main-nav {
                 display: none;
@@ -1092,11 +1069,11 @@
             .intro-section {
                 padding: 1.5rem 1rem;
                 border-bottom: 1px solid #eee;
-                background-image: none;
-                filter: none;
+                background-image: none; /* Hide background image for print */
+                filter: none; /* Remove filter for print */
             }
             .intro-section::after {
-                display: none;
+                display: none; /* Hide overlay for print */
             }
             .intro-section .profile-picture {
                 display: none;
@@ -1115,7 +1092,7 @@
                 gap: 0.5rem;
             }
             .intro-section .contact-info a {
-                color: #333;
+                color: #333; /* Darker links for print */
             }
             .section {
                 padding: 1rem;
@@ -1194,7 +1171,7 @@
                 display: none; /* Hide watermarks in print */
             }
             .certifications-grid {
-                display: block;
+                display: block; /* Revert to block for print */
             }
             .certification-card {
                 box-shadow: none;
@@ -1205,7 +1182,7 @@
                 background-color: transparent;
             }
             .certification-card .cert-logo-overlay {
-                display: none;
+                display: none; /* Hide watermarks in print */
             }
             .certification-card .cert-title {
                 color: #333;
@@ -1222,7 +1199,7 @@
                 font-size: 0.85rem;
             }
             .languages-grid {
-                display: block;
+                display: block; /* Revert to block for print */
             }
             .language-card {
                 box-shadow: none;
@@ -1233,7 +1210,7 @@
                 background-color: transparent;
             }
             .language-card .language-flag {
-                display: none;
+                display: none; /* Hide flags in print */
             }
             .language-card .item-title {
                 color: #333;
@@ -1245,7 +1222,7 @@
                 font-size: 0.9rem;
             }
             .education-grid {
-                display: block;
+                display: block; /* Revert to block for print */
             }
             .education-card {
                 box-shadow: none;
@@ -1256,7 +1233,7 @@
                 background-color: transparent;
             }
             .education-card .edu-icon {
-                display: none;
+                display: none; /* Hide icons for print */
             }
             .education-card .edu-title {
                 color: #333;
@@ -1273,7 +1250,7 @@
                 font-size: 0.9rem;
             }
             .miscellaneous-grid {
-                display: block;
+                display: block; /* Revert to block for print */
             }
             .miscellaneous-card {
                 box-shadow: none;
@@ -1284,7 +1261,7 @@
                 background-color: transparent;
             }
             .miscellaneous-card .misc-icon {
-                display: none;
+                display: none; /* Hide icons for print */
             }
             .miscellaneous-card .misc-text {
                 color: #555;
@@ -1292,7 +1269,7 @@
             }
             footer {
                 padding: 1rem;
-                background-color: #eee;
+                background-color: #eee; /* Lighter footer for print */
                 color: #555;
             }
         }
@@ -1315,7 +1292,7 @@
     <div class="main-wrapper">
         <!-- Introduction Section -->
         <div class="intro-section section">
-            <img src="https://raw.githubusercontent.com/Navarrete-Lab/my-professional-cv/main/IMG_4316.jpg" alt="Freddy Navarrete Profile Picture" class="profile-picture">
+            <img src="ttps://raw.githubusercontent.com/Navarrete-Lab/my-professional-cv/main/IMG_4316.jpg" alt="Freddy Navarrete Profile Picture" class="profile-picture">
             <h1>Freddy Navarrete</h1>
             <p class="tagline"><span id="typed-title"></span></p>
             <section class="contact-info">
@@ -1354,7 +1331,7 @@
                     <!-- Westwing -->
                     <li class="job-entry westwing-watermark">
                         <div class="date-range">Aug. 2022 – Mar. 2025</div>
-                        <div class="item-title">Westwing</div>
+                        <div class="item-title">Westwing - Munich, Germany</div>
                         <div class="item-subtitle">CRM Operations Manager</div>
                         <div class="item-description">
                             <ul>
@@ -1377,7 +1354,7 @@
                     <!-- Explorandes -->
                     <li class="job-entry explorandes-watermark">
                         <div class="date-range">Aug. 2019 – Jul. 2021</div>
-                        <div class="item-title">Explorandes</div>
+                        <div class="item-title">Explorandes - Lima, Peru</div>
                         <div class="item-subtitle">B2C Account Manager & Destination Specialist</div>
                         <div class="item-description">
                             <ul>
@@ -1389,8 +1366,6 @@
                             <ul>
                                 <li>Surpassed quarterly sales goals by 25%+ and retained 90% of client bookings during COVID travel restrictions.</li>
                                 <li>Contributed to customer journey redesign, sales process optimisation and A/B Testing of landing pages.</li>
-                                <li>Developed and optimized trip itineraries and guided tours across Ecuador for several local companies, enhancing guest experience and operational efficiency.</li>
-                                <li>Led seasonal Humpback Whale Watching Tours.</li>
                             </ul>
                             <p>**Reason for reorientation:** Pursuit of a Master's degree in Digital Marketing Strategy in France.</p>
                         </div>
@@ -1399,7 +1374,7 @@
                     <!-- Casa Nuestra Boutique Hotel -->
                     <li class="job-entry casanuestra-watermark">
                         <div class="date-range">Nov. 2017 – Dec. 2018</div>
-                        <div class="item-title">Casa Nuestra Boutique Hotel</div>
+                        <div class="item-title">Casa Nuestra Boutique Hotel - Lima, Peru</div>
                         <div class="item-subtitle">Operations Manager</div>
                         <div class="item-description">
                             <ul>
@@ -1418,7 +1393,7 @@
                     <!-- Wake Up Coffee (no specific watermark as no logo provided) -->
                     <li class="job-entry">
                         <div class="date-range">Oct. 2015 – Nov. 2017</div>
-                        <div class="item-title">Wake Up Coffee</div>
+                        <div class="item-title">Wake Up Coffee - Lima, Peru</div>
                         <div class="item-subtitle">Operations Manager</div>
                         <div class="item-description">
                             <ul>
@@ -1430,7 +1405,7 @@
                     <!-- Oxford English School (no specific watermark as no logo provided) -->
                     <li class="job-entry">
                         <div class="date-range">Jun. 2014 – Jun. 2015</div>
-                        <div class="item-title">Oxford English School</div>
+                        <div class="item-title">Oxford English School - Manta, Ecuador</div>
                         <div class="item-subtitle">Sales Coordinator</div>
                         <div class="item-description">
                             <ul>
@@ -1442,7 +1417,7 @@
                     <!-- 4YOU2 English School (no specific watermark as no logo provided) -->
                     <li class="job-entry">
                         <div class="date-range">Jan. 2013 – May 2014</div>
-                        <div class="item-title">4YOU2 English School</div>
+                        <div class="item-title">4YOU2 English School - São Paulo, Brazil</div>
                         <div class="item-subtitle">Program Coordinator</div>
                         <div class="item-description">
                             <ul>
@@ -1454,7 +1429,7 @@
                     <!-- Travel Coordinator & Guide (no specific watermark as no logo provided) -->
                     <li class="job-entry">
                         <div class="date-range">2009 – 2013</div>
-                        <div class="item-title">Various Companies</div>
+                        <div class="item-title">Various Companies - Ecuador</div>
                         <div class="item-subtitle">Travel Coordinator & Guide</div>
                         <div class="item-description">
                             <ul>
