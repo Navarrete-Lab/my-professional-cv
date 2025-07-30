@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Freddy Navarrete - Professional Curriculum Vitae</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts for Playfair Display SC and Lato -->
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display+SC:700&display=swap' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lato:300,400,600,700&display=swap' rel='stylesheet' type='text/css'>
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Base styles for smooth scrolling and body padding */
@@ -87,6 +84,10 @@
             box-shadow: 0 3px 8px rgba(0,0,0,0.25); /* Stronger shadow for nav */
             padding: 0.9rem 0; /* Slightly more padding */
             text-align: center;
+            display: flex; /* Use flex for internal alignment */
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+            position: relative; /* For positioning hamburger icon */
         }
         .main-nav ul {
             list-style: none;
@@ -112,6 +113,9 @@
             background-color: #3498DB; /* Vibrant tech blue */
             color: #ffffff;
             transform: translateY(-2px); /* Subtle lift on hover */
+        }
+        .menu-toggle {
+            display: none; /* Hidden by default on desktop */
         }
 
         /* Header/Intro Section */
@@ -802,1002 +806,878 @@
             background-color: #3498DB; /* Accent color for the dot */
             border: 3px solid #ffffff; /* White border around the dot */
             border-radius: 50%;
-            z-index: 2; /* Ensure dot is on top */
-            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.3); /* Subtle glow around the dot */
-            transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for dot */
+            z-index: 2; /* Ensure dot is above the line and card */
+            box-shadow: 0 0 0 2px #3498DB; /* Inner shadow for a halo effect */
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
-        /* Watermarks (adjust position based on new padding) */
-        .job-entry::before {
-            content: '';
-            position: absolute;
-            top: 0; /* Cover the whole block */
-            left: 0; /* Cover the whole block */
-            width: 100%; /* Cover the whole block */
-            height: 100%; /* Cover the whole block */
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: cover; /* Make image cover the entire block */
-            opacity: 0.05; /* Very subtle by default */
-            filter: grayscale(100%) brightness(1.1); /* Start grayscale */
-            transition: all 0.4s ease-in-out; /* Smooth transition for all properties */
-            z-index: -1; /* Behind content */
+        .job-entry:hover::after {
+            background-color: #2C3E50; /* Darker accent on hover */
+            border-color: #ECF0F1; /* Lighter border on hover */
         }
 
-        /* Specific company watermarks and hover effects */
-        .job-entry.westwing-watermark::before {
-            background-image: url('https://www.webspotting.de/wp-content/uploads/2024/01/westwing-se-600.png');
-        }
-        .job-entry.westwing-watermark:hover::before {
-            opacity: 0.15; /* More visible on hover */
-            filter: grayscale(0%); /* Full color on hover */
-        }
-
-        .job-entry.explorandes-watermark::before {
-            background-image: url('https://s3-eu-west-1.amazonaws.com/tpd/logos/5abbd0de719bac0001a90542/0x0.png');
-        }
-        .job-entry.explorandes-watermark:hover::before {
-            opacity: 0.15; /* More visible on hover */
-            filter: grayscale(0%); /* Full color on hover */
-        }
-
-        .job-entry.casanuestra-watermark::before {
-            background-image: url('https://www.casanuestraperu.com/wp-content/uploads/2023/10/cn_logo_24-1.png');
-        }
-        .job-entry.casanuestra-watermark:hover::before {
-            opacity: 0.15; /* More visible on hover */
-            filter: grayscale(0%); /* Full color on hover */
-        }
-
-
-
-        /* Key achievements styling */
-        .item-description h4 {
+        .job-entry .job-header {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem; /* Space between text and icon */
-            font-weight: 700; /* Make it bolder */
-            color: #2C3E50;
-            margin-top: 1.5rem; /* More space above achievements */
+            justify-content: space-between;
+            align-items: flex-start;
             margin-bottom: 0.75rem;
-            font-size: 1.1rem; /* Slightly larger achievement heading */
-        }
-        .item-description h4 i {
-            color: #27AE60; /* Green color for achievement icon */
-            font-size: 1.2em;
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+            gap: 0.5rem; /* Space between items when wrapped */
         }
 
-        /* Refined bullet points for job descriptions */
-        .content-list .item-description ul {
+        .job-entry .job-title {
+            font-size: 1.5rem; /* Larger job title */
+            font-weight: 700;
+            color: #2C3E50;
+            line-height: 1.3;
+            flex-grow: 1; /* Allow title to take available space */
+            text-align: left;
+        }
+
+        .job-entry .job-date {
+            font-size: 1rem; /* Standard date size */
+            font-weight: 600;
+            color: #556270;
+            white-space: nowrap; /* Prevent date from wrapping */
+        }
+
+        .job-entry .job-company {
+            font-size: 1.2rem; /* Larger company name */
+            color: #4b5563;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            text-align: left;
+            width: 100%; /* Ensure company name takes full width below title */
+        }
+
+        .job-entry .job-description {
+            font-size: 1rem;
+            color: #6b7280;
+            line-height: 1.7;
+            text-align: justify; /* Justify description text */
+        }
+        .job-entry .job-description ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-        .content-list .item-description ul li {
+        .job-entry .job-description ul li {
             text-align: left;
-            margin-bottom: 0.7rem; /* Increased space between bullet points */
+            margin-bottom: 0.5rem;
             position: relative;
-            padding-left: 2rem; /* More space for the checkmark */
-            font-size: 1rem; /* Consistent font size */
+            padding-left: 1.5rem;
             color: #374151;
         }
-        .content-list .item-description ul li::before {
-            content: '\f058'; /* Font Awesome check-circle icon */
+        .job-entry .job-description ul li::before {
+            content: '\2713';
             font-family: 'Font Awesome 5 Free';
             font-weight: 900;
-            color: #27AE60; /* Green checkmark */
+            color: #3498DB;
             position: absolute;
             left: 0;
-            top: 0.05rem; /* Fine-tune vertical alignment */
-            font-size: 1.1em; /* Slightly larger icon */
+            top: 0.15rem;
+            font-size: 0.9em;
         }
 
-
-        /* Responsive adjustments */
+        /* --- Mobile-Specific Enhancements --- */
         @media (max-width: 768px) {
             body {
-                padding-top: 90px;
+                padding-top: 60px; /* Adjust padding for smaller fixed nav */
             }
+
             .main-wrapper {
-                margin: 0.5rem;
-                border-radius: 0;
-                box-shadow: none; /* Lighter shadow on mobile */
+                margin: 1.5rem 1rem; /* Reduced margin for smaller screens */
+                border-radius: 0.75rem; /* Slightly less rounded */
+                box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.15), 0 5px 15px -3px rgba(0, 0, 0, 0.1); /* Lighter shadow */
             }
+
+            .section {
+                padding: 2rem 1.5rem; /* Reduced padding for sections */
+            }
+
+            /* Navigation Bar for Mobile (Hamburger Menu) */
+            .main-nav {
+                padding: 0.75rem 0; /* Slightly less padding */
+                justify-content: space-between; /* Space out title and icon */
+                padding-left: 1.5rem; /* Align "Freddy Navarrete" */
+                padding-right: 1.5rem; /* Align hamburger */
+            }
+
             .main-nav ul {
-                flex-direction: column;
+                flex-direction: column; /* Stack nav items vertically */
+                display: none; /* Hide by default, will be toggled by JS */
+                width: 100%;
+                background-color: rgba(44, 62, 80, 0.95); /* Slightly darker for menu background */
+                position: absolute;
+                top: 60px; /* Below the header/logo */
+                left: 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
             }
+
+            .main-nav ul.open {
+                display: flex; /* Show when open */
+            }
+
             .main-nav li {
-                margin: 0.25rem 0;
+                margin: 0; /* Remove horizontal margin */
+                width: 100%;
+                border-bottom: 1px solid rgba(255,255,255,0.1); /* Subtle separator */
             }
+
+            .main-nav li:last-child {
+                border-bottom: none;
+            }
+
+            .main-nav a {
+                display: block; /* Make links full width */
+                padding: 0.8rem 1.5rem; /* More generous tap area */
+                font-size: 1rem; /* Slightly larger font for readability */
+                text-align: left; /* Align text to the left */
+                border-radius: 0; /* No rounded corners for full-width items */
+            }
+
+            /* Hamburger Icon */
+            .menu-toggle {
+                display: block; /* Show hamburger icon on mobile */
+                /* Positioned within the main-nav flex container */
+                font-size: 1.8rem;
+                color: #ECF0F1;
+                cursor: pointer;
+                z-index: 1001; /* Ensure it's above everything */
+            }
+            .main-nav .logo {
+                font-size: 1.2rem; /* Adjust logo size on mobile */
+                font-weight: 700;
+                color: #ECF0F1;
+                text-decoration: none;
+            }
+
+            /* Intro Section */
             .intro-section {
-                padding: 2.5rem 1.5rem;
+                padding: 3rem 1.5rem; /* Reduced padding */
             }
+
             .intro-section .profile-picture {
-                width: 120px;
+                width: 120px; /* Smaller profile picture */
                 height: 120px;
+                border-width: 4px; /* Thinner border */
+                margin-bottom: 1.5rem;
             }
+
             .intro-section h1 {
-                font-size: 3rem;
+                font-size: 2.8rem; /* Smaller name */
             }
             .intro-section h1:before {
-                font-size: 1.1rem;
+                font-size: 1.1rem; /* Smaller intro text */
             }
             .intro-section .tagline {
-                font-size: 1.3rem;
+                font-size: 1.3rem; /* Smaller tagline */
+                margin-bottom: 1.5rem;
             }
             .intro-section .contact-info {
-                flex-direction: column;
-                gap: 0.75rem;
+                flex-direction: column; /* Stack contact info vertically */
+                gap: 1rem; /* Reduce gap */
             }
-            .section {
-                padding: 2rem 1.5rem;
+            .contact-item-box {
+                width: fit-content; /* Adjust width to content */
+                margin: 0 auto; /* Center individual contact boxes */
             }
-            .section h2 {
-                font-size: 2rem;
+
+            /* Section Headings */
+            h2 {
+                font-size: 2rem; /* Smaller section titles */
                 margin-bottom: 1.5rem;
             }
+            h2:after {
+                width: 60px; /* Shorter underline */
+                height: 3px; /* Thinner underline */
+            }
+
+            /* Content Lists (Experience, Education details) */
             .content-list li {
-                margin-bottom: 1.5rem;
+                margin-bottom: 1.5rem; /* Less space between list items */
             }
             .content-list .item-title {
-                font-size: 1.2rem;
+                font-size: 1.2rem; /* Smaller item title */
             }
             .content-list .item-subtitle {
-                font-size: 1.1rem;
+                font-size: 1rem; /* Smaller subtitle */
             }
             .content-list .item-description {
-                font-size: 0.95rem;
-                text-align: left;
-                padding: 0;
-            }
-            .content-list .item-description ul {
-                margin-left: 1.5rem; /* Adjust indent for mobile */
+                font-size: 0.95rem; /* Slightly smaller description */
+                padding: 0; /* Remove horizontal padding */
+                text-align: left; /* Align text left for better readability on small screens */
             }
             .content-list .item-description ul li {
-                padding-left: 1.8rem; /* Adjust padding for mobile */
+                padding-left: 1.2rem; /* Adjust padding for custom bullet */
             }
             .content-list .item-description ul li::before {
-                top: 0.2rem; /* Adjust vertical alignment for mobile */
+                top: 0.05rem; /* Adjust vertical alignment for smaller font */
             }
+
+
+            /* Skills Section */
             .skills-grid {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
+                flex-direction: column; /* Stack skill categories vertically */
+                gap: 1.5rem;
             }
             .skill-category-block {
-                width: 90%; /* Adjust width for mobile */
-                max-width: 350px;
+                flex: 1 1 100%; /* Take full width */
+                max-width: 100%; /* Ensure it takes full width */
                 padding: 1.5rem;
             }
             .skill-category-block .category-title {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
             }
             .skill-item-list li {
-                flex-direction: column; /* Stack icon/name and bar vertically */
-                align-items: flex-start; /* Align content to start */
+                margin-bottom: 0.8rem;
             }
-            .job-entry::before {
-                /* On mobile, keep it as a subtle watermark, not full cover */
-                width: 80px;
-                height: 80px;
-                right: 0.5rem;
-                background-size: contain; /* Revert to contain for mobile watermark */
-                opacity: 0.12;
-                filter: grayscale(100%) brightness(1.1);
-                transition: none; /* No hover transition for mobile watermark */
-            }
-            .job-entry:hover::before {
-                /* Disable hover effects for mobile if it's a small watermark */
-                opacity: 0.12;
-                filter: grayscale(100%) brightness(1.1);
-                background-size: contain;
-            }
+
+            /* Certifications Grid */
             .certifications-grid {
-                grid-template-columns: 1fr; /* Stack cards on mobile */
-                gap: 1rem;
+                grid-template-columns: 1fr; /* Single column on small screens */
             }
-            .languages-grid {
-                grid-template-columns: 1fr; /* Stack language cards on mobile */
-                gap: 1rem;
-            }
-            .language-card {
-                width: 90%;
-                max-width: 250px;
+            .certification-card {
+                height: auto; /* Allow height to adjust based on content */
                 padding: 1.2rem;
             }
+            .certification-card .cert-title {
+                font-size: 1.05rem;
+            }
+            .certification-card .cert-subtitle {
+                font-size: 0.9rem;
+            }
+            .certification-card:hover .cert-logo-overlay {
+                background-size: 80px; /* Smaller logo on hover */
+                opacity: 0.15;
+            }
+
+            /* Languages Grid */
+            .languages-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Adjust columns for languages */
+            }
+            .language-card .language-flag {
+                width: 40px;
+                height: 40px;
+                margin-bottom: 0.5rem;
+            }
+            .language-card .item-title {
+                font-size: 1rem;
+            }
+            .language-card .item-subtitle {
+                font-size: 0.85rem;
+            }
+
+            /* Education Grid */
             .education-grid {
-                grid-template-columns: 1fr; /* Stack education cards on mobile */
-                gap: 1rem;
+                grid-template-columns: 1fr; /* Single column on small screens */
             }
             .education-card {
-                width: 90%;
-                max-width: 350px;
-                padding: 1.5rem;
-            }
-            .miscellaneous-grid {
-                grid-template-columns: 1fr; /* Stack misc cards on mobile */
-                gap: 1rem;
-            }
-            .miscellaneous-card {
-                width: 90%;
-                max-width: 300px;
+                height: auto; /* Allow height to adjust based on content */
                 padding: 1.2rem;
             }
-            /* Timeline adjustments for mobile */
+            .education-card .edu-icon {
+                font-size: 2.2rem;
+                margin-bottom: 0.5rem;
+            }
+            .education-card .edu-title {
+                font-size: 1.15rem;
+            }
+            .education-card .edu-subtitle {
+                font-size: 1rem;
+            }
+            .education-card .edu-location {
+                font-size: 0.9rem;
+            }
+            .education-card:hover .edu-logo-overlay {
+                background-size: 100px; /* Adjust for ULEAM logo on mobile */
+            }
+
+
+            /* Miscellaneous Grid */
+            .miscellaneous-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Adjust columns for misc */
+            }
+            .miscellaneous-card {
+                padding: 1.2rem;
+            }
+            .miscellaneous-card .misc-icon {
+                font-size: 2rem;
+                margin-bottom: 0.8rem;
+            }
+            .miscellaneous-card .misc-text {
+                font-size: 0.95rem;
+            }
+
+            /* Work Experience Timeline */
             .timeline-container {
-                padding-left: 20px; /* Adjust for smaller screens */
+                padding-left: 20px; /* Reduce padding */
             }
             .timeline-container::before {
-                left: 10px;
-            }
-            .job-entry::after {
-                left: -15px; /* Adjust dot position for smaller screens */
-                width: 14px;
-                height: 14px;
-                border: 2px solid #ffffff;
-                box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+                left: 10px; /* Adjust line position */
+                width: 2px; /* Thinner line */
             }
             .job-entry {
-                padding: 1rem 1.5rem; /* Adjust padding */
+                padding: 1.2rem 1.5rem;
                 margin-bottom: 2rem;
             }
+            .job-entry::after {
+                left: -18px; /* Adjust dot position */
+                width: 14px;
+                height: 14px;
+                border-width: 2px;
+                top: 1.2rem; /* Adjust dot vertical position */
+            }
+            .job-entry .job-title {
+                font-size: 1.15rem;
+            }
+            .job-entry .job-company {
+                font-size: 1rem;
+            }
+            .job-entry .job-date {
+                font-size: 0.9rem;
+            }
+            .job-entry .job-description {
+                font-size: 0.9rem;
+            }
+            .job-entry .job-description ul li {
+                padding-left: 1.1rem;
+            }
+            .job-entry .job-description ul li::before {
+                font-size: 0.8em;
+                top: 0.05rem;
+            }
+
+            /* Footer */
             footer {
-                padding: 1.5rem;
+                padding: 1.5rem 1rem;
+                font-size: 0.9rem;
+            }
+            footer .social-links a {
+                margin: 0 0.8rem;
+                font-size: 1.2rem;
             }
         }
 
-        /* Print specific styles */
-        @media print {
-            body {
-                padding-top: 0;
-                background-color: #fff;
-            }
-            body::before {
-                opacity: 0.01; /* Even lighter for print */
-            }
-            .main-nav {
-                display: none;
-            }
+        /* Even smaller screens (e.g., iPhone 5/SE) */
+        @media (max-width: 480px) {
             .main-wrapper {
-                box-shadow: none;
-                border-radius: 0;
-                margin: 0;
-                max-width: none;
-                border: none;
+                margin: 1rem 0.5rem;
             }
-            .intro-section {
+
+            .section {
                 padding: 1.5rem 1rem;
-                border-bottom: 1px solid #eee;
-                background-image: none; /* Hide background image for print */
-                filter: none; /* Remove filter for print */
             }
-            .intro-section::after {
-                display: none; /* Hide overlay for print */
-            }
-            .intro-section .profile-picture {
-                display: none;
+
+            .intro-section h1 {
+                font-size: 2.2rem;
             }
             .intro-section h1:before {
                 font-size: 0.9rem;
             }
-            .intro-section h1 {
-                font-size: 2.5rem;
-                margin-top: 0;
-            }
             .intro-section .tagline {
                 font-size: 1.1rem;
             }
-            .intro-section .contact-info {
-                gap: 0.5rem;
+
+            h2 {
+                font-size: 1.7rem;
             }
-            .intro-section .contact-info a {
-                color: #333; /* Darker links for print */
-            }
-            .section {
-                padding: 1rem;
-                border-bottom: 1px solid #eee;
-            }
-            .section h2 {
-                font-size: 1.8rem;
-                margin-bottom: 0.75rem;
-                color: #333;
-            }
-            .section h2:after {
-                width: 50px;
-                height: 2px;
-                background-color: #333;
-            }
-            .content-list li {
-                margin-bottom: 0.75rem;
-            }
-            .content-list .item-title {
-                font-size: 1.1rem;
-                color: #333;
-            }
-            .content-list .item-subtitle {
-                font-size: 1rem;
-                color: #555;
-            }
-            .content-list .item-description {
-                font-size: 0.9rem;
-                color: #666;
-                padding: 0;
-            }
-            .content-list .item-description ul {
-                margin-left: 1rem;
-                padding-left: 0.2rem;
-                font-size: 0.85rem;
-                color: #444;
-            }
-            .content-list .item-description ul li::before {
-                content: ''; /* Remove custom bullet for print */
-            }
-            .content-list .item-description h4 {
-                color: #333;
-            }
-            .skills-grid {
-                display: block;
-            }
-            .skill-category-block {
-                width: auto;
-                max-width: none;
-                padding: 0.75rem 0;
-                box-shadow: none;
-                border: none;
-                border-bottom: 1px dashed #ddd;
-                margin-bottom: 0.75rem;
-                background-color: transparent;
-            }
-            .skill-category-block:last-child {
-                border-bottom: none;
-            }
-            .skill-category-block .category-title {
-                color: #333;
-                font-size: 1rem;
-                margin-bottom: 0.5rem;
-            }
-            .skill-category-block .skill-item-list li {
-                font-size: 0.9rem;
-                color: #555;
-            }
-            .job-entry {
-                box-shadow: none;
-                border: none;
-                padding: 1rem 0;
-                margin-bottom: 1rem;
-            }
-            .job-entry::before {
-                display: none; /* Hide watermarks in print */
-            }
-            .certifications-grid {
-                display: block; /* Revert to block for print */
-            }
-            .certification-card {
-                box-shadow: none;
-                border: none;
-                padding: 0.75rem 0;
-                margin-bottom: 0.75rem;
-                border-bottom: 1px dashed #ddd;
-                background-color: transparent;
-            }
-            .certification-card .cert-logo-overlay {
-                display: none; /* Hide watermarks in print */
-            }
-            .certification-card .cert-title {
-                color: #333;
-                font-size: 1rem;
-                margin-bottom: 0.2rem;
-            }
-            .certification-card .cert-subtitle {
-                color: #555;
-                font-size: 0.9rem;
-                margin-bottom: 0.2rem;
-            }
-            .certification-card .cert-date {
-                color: #666;
-                font-size: 0.85rem;
-            }
-            .languages-grid {
-                display: block; /* Revert to block for print */
-            }
-            .language-card {
-                box-shadow: none;
-                border: none;
-                padding: 0.75rem 0;
-                margin-bottom: 0.75rem;
-                border-bottom: 1px dashed #ddd;
-                background-color: transparent;
-            }
-            .language-card .language-flag {
-                display: none; /* Hide flags in print */
-            }
-            .language-card .item-title {
-                color: #333;
-                font-size: 1rem;
-                margin-bottom: 0.2rem;
-            }
-            .language-card .item-subtitle {
-                color: #555;
-                font-size: 0.9rem;
-            }
-            .education-grid {
-                display: block; /* Revert to block for print */
-            }
+
+            .certifications-card,
             .education-card {
-                box-shadow: none;
-                border: none;
-                padding: 0.75rem 0;
-                margin-bottom: 0.75rem;
-                border-bottom: 1px dashed #ddd;
-                background-color: transparent;
+                padding: 1rem;
             }
-            .education-card .edu-icon {
-                display: none; /* Hide icons for print */
-            }
-            .education-card .edu-title {
-                color: #333;
-                font-size: 1.1rem;
-                margin-bottom: 0.2rem;
-            }
-            .education-card .edu-subtitle {
-                color: #555;
-                font-size: 1.0rem;
-                margin-bottom: 0.2rem;
-            }
-            .education-card .edu-location {
-                color: #666;
-                font-size: 0.9rem;
+
+            .languages-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             }
             .miscellaneous-grid {
-                display: block; /* Revert to block for print */
-            }
-            .miscellaneous-card {
-                box-shadow: none;
-                border: none;
-                padding: 0.75rem 0;
-                margin-bottom: 0.75rem;
-                border-bottom: 1px dashed #ddd;
-                background-color: transparent;
-            }
-            .miscellaneous-card .misc-icon {
-                display: none; /* Hide icons for print */
-            }
-            .miscellaneous-card .misc-text {
-                color: #555;
-                font-size: 0.9rem;
-            }
-            footer {
-                padding: 1rem;
-                background-color: #eee; /* Lighter footer for print */
-                color: #555;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <div class="main-nav">
+    <nav class="main-nav">
+        <a href="#intro" class="logo">Freddy Navarrete</a>
         <ul>
-            <li><a href="#summary-section">Summary</a></li>
-            <li><a href="#experience-section">Experience</a></li>
-            <li><a href="#education-section">Education</a></li>
-            <li><a href="#skills-section">Skills</a></li>
-            <li><a href="#certifications-section">Certifications</a></li>
-            <li><a href="#languages-section">Languages</a></li>
-            <li><a href="#miscellaneous-section">Miscellaneous</a></li>
+            <li><a href="#about" class="active">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#trainings">Trainings & Certifications</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#languages">Languages</a></li>
+            <li><a href="#miscellaneous">Miscellaneous</a></li>
         </ul>
-    </div>
+    </nav>
 
     <div class="main-wrapper">
-        <!-- Introduction Section -->
-        <div class="intro-section section">
-            <img src="https://raw.githubusercontent.com/Navarrete-Lab/my-professional-cv/refs/heads/main/IMG_4316.jpg" alt="Freddy Navarrete Profile Picture" class="profile-picture">
+        <section id="intro" class="intro-section section">
+            <img src="https://via.placeholder.com/150/d1d5db/4b5563?text=Profile" alt="Freddy Navarrete Profile" class="profile-picture">
             <h1>Freddy Navarrete</h1>
-            <p class="tagline"><span id="typed-title"></span></p>
-            <section class="contact-info">
-                <p class="mb-2">
-                    <a href="mailto:navarretefreddy@gmail.com" class="contact-item-box"><i class="fas fa-envelope"></i> navarretefreddy@gmail.com</a>
-                </p>
-                <p class="mb-2">
-                    <a href="tel:+4915202490477" class="contact-item-box"><i class="fas fa-phone"></i> +49 15202490477</a>
-                </p>
-                <p class="mb-2">
-                    <span class="contact-item-box"><i class="fas fa-map-marker-alt"></i> Munich, Germany</span>
-                </p>
-                <p>
-                    <a href="https://www.linkedin.com/in/freddy-navarrete" target="_blank" class="contact-item-box"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                </p>
-            </section>
-        </div>
+            <p class="tagline">CRM and Digital Transformation Specialist | Driving Business Growth with Salesforce Expertise</p>
+            <div class="contact-info">
+                <p class="contact-item-box"><i class="fas fa-map-marker-alt"></i> Munich, Germany</p>
+                <a href="mailto:freddy.navarrete@example.com" class="contact-item-box"><i class="fas fa-envelope"></i> freddy.navarrete@example.com</a>
+                <a href="tel:+1234567890" class="contact-item-box"><i class="fas fa-phone"></i> +123 456 7890</a>
+            </div>
+        </section>
 
-        <!-- Summary Section -->
-        <div class="summary-section section" id="summary-section">
-            <h2>Summary</h2>
-            <ul class="content-list">
-                <li>
-                    <p class="item-description">
-                        Results-oriented professional with an MBA in Digital Marketing Strategy and international experience in CRM, sales, and account management in the e-commerce, tourism/hospitality, and education sectors. Expertise in e-mail marketing, customer experience, A/B testing, and CRM tools (Braze, Salesforce). Skilled in project management, relationship building, and optimising digital sales processes.
-                    </p>
-                </li>
-            </ul>
-        </div>
+        <section id="about" class="section">
+            <h2>About Me</h2>
+            <p class="text-lg text-center leading-relaxed text-gray-700 max-w-2xl mx-auto">As a dedicated **CRM and Digital Transformation Specialist**, I bring over a decade of experience in optimizing business processes, enhancing customer relationships, and driving digital innovation. My expertise spans across **Salesforce Sales Cloud, Service Cloud, Marketing Cloud, and Pardot**, complemented by a strong foundation in data analytics, project management, and business development. I am passionate about leveraging technology to streamline operations, boost sales, and deliver exceptional customer experiences, consistently achieving tangible results and fostering growth.</p>
+        </section>
 
-        <!-- Professional Experience Section -->
-        <div class="experience-section section" id="experience-section">
-            <h2>Professional Experience</h2>
+        <section id="experience" class="section">
+            <h2>Work Experience</h2>
             <div class="timeline-container">
-                <ul class="content-list">
-                    <!-- Westwing -->
-                    <li class="job-entry westwing-watermark">
-                        <div class="date-range">Aug. 2022 – Mar. 2025</div>
-                        <div class="item-title">Westwing - Munich, Germany</div>
-                        <div class="item-subtitle">CRM Operations Manager</div>
-                        <div class="item-description">
-                            <ul>
-                                <li>Led multi-channel CRM initiatives (e-mail & push via Braze) focused on targeted customer engagement and CLV-driven retention.</li>
-                                <li>Managed daily end-to-end newsletter operations for 11 European markets, ensuring timely campaign execution with 99% delivery accuracy and alignment with brand tone and compliance standards.</li>
-                                <li>Executed advanced audience segmentation and data-driven personalisation.</li>
-                                <li>Optimised CRM campaigns and templates through A/B testing.</li>
-                                <li>Generated performance and behavioural reports by querying large datasets in Snowflake using SQL, driving actionable insights to improve effectiveness.</li>
-                                <li>Collaborated with Product and Data teams to contribute to quarterly strategy planning and maintain GDPR-compliant CRM practices.</li>
-                            </ul>
-                            <h4><i class="fas fa-star"></i> Key Achievements:</h4>
-                            <ul>
-                                <li>Led the technical launch of newsletter and push notification campaigns for Westwing's expansion into the Portuguese market, establishing a scalable CRM framework that was subsequently adopted across 9 new country markets.</li>
-                                <li>Implemented a new CRM automation canvas flow (in Braze) for transactional e-mails and daily newsletters across all Westwing EU markets.</li>
-                            </ul>
-                            <p>**Reason for reorientation:** Position impacted by organisational restructuring.</p>
-                        </div>
-                    </li>
-
-                    <!-- Explorandes -->
-                    <li class="job-entry explorandes-watermark">
-                        <div class="date-range">Aug. 2019 – Jul. 2021</div>
-                        <div class="item-title">Explorandes - Lima, Peru</div>
-                        <div class="item-subtitle">B2C Account Manager & Destination Specialist</div>
-                        <div class="item-description">
-                            <ul>
-                                <li>Managed B2C lead conversion, web sales, and online channels for a top adventure tourism agency in Peru.</li>
-                                <li>Built and managed strong client relationships (U.S. & Europe), creating custom offers and ensuring seamless end-to-end travel experiences.</li>
-                                <li>Implemented and managed CRM tools (Freshsales, Salesforce).</li>
-                            </ul>
-                            <h4><i class="fas fa-star"></i> Key Achievements:</h4>
-                            <ul>
-                                <li>Surpassed quarterly sales goals by 25%+ and retained 90% of client bookings during COVID travel restrictions.</li>
-                                <li>Contributed to customer journey redesign, sales process optimisation and A/B Testing of landing pages.</li>
-                            </ul>
-                            <p>**Reason for reorientation:** Pursuit of a Master's degree in Digital Marketing Strategy in France.</p>
-                        </div>
-                    </li>
-
-                    <!-- Casa Nuestra Boutique Hotel -->
-                    <li class="job-entry casanuestra-watermark">
-                        <div class="date-range">Nov. 2017 – Dec. 2018</div>
-                        <div class="item-title">Casa Nuestra Boutique Hotel - Lima, Peru</div>
-                        <div class="item-subtitle">Operations Manager</div>
-                        <div class="item-description">
-                            <ul>
-                                <li>In charge of client bookings, web sales and online channel distribution.</li>
-                                <li>Managed end-to-end customer service, from sales & inquiry management to arranging on-site services.</li>
-                                <li>Managed day-to-day hotel operations, accounting, purchasing, and service staff.</li>
-                                <li>Worked with third-party booking providers (Booking.com, Expedia, Airbnb, etc.) to monitor channel performance and troubleshoot operational bottlenecks.</li>
-                            </ul>
-                            <h4><i class="fas fa-star"></i> Key Achievements:</h4>
-                            <ul>
-                                <li>Tripadvisor Traveler's Choice Award 2017 and 2018.</li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <!-- Wake Up Coffee (no specific watermark as no logo provided) -->
-                    <li class="job-entry">
-                        <div class="date-range">Oct. 2015 – Nov. 2017</div>
-                        <div class="item-title">Wake Up Coffee - Lima, Peru</div>
-                        <div class="item-subtitle">Operations Manager</div>
-                        <div class="item-description">
-                            <ul>
-                                <li>Oversaw purchasing, supplier and inventory management, cash handling.</li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <!-- Oxford English School (no specific watermark as no logo provided) -->
-                    <li class="job-entry">
-                        <div class="date-range">Jun. 2014 – Jun. 2015</div>
-                        <div class="item-title">Oxford English School - Manta, Ecuador</div>
-                        <div class="item-subtitle">Sales Coordinator</div>
-                        <div class="item-description">
-                            <ul>
-                                <li>Managed sales of English classes and software packs, student services and social media marketing.</li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <!-- 4YOU2 English School (no specific watermark as no logo provided) -->
-                    <li class="job-entry">
-                        <div class="date-range">Jan. 2013 – May 2014</div>
-                        <div class="item-title">4YOU2 English School - São Paulo, Brazil</div>
-                        <div class="item-subtitle">Program Coordinator</div>
-                        <div class="item-description">
-                            <ul>
-                                <li>Led a team of international English teachers, coordinated educational content design.</li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <!-- Travel Coordinator & Guide (no specific watermark as no logo provided) -->
-                    <li class="job-entry">
-                        <div class="date-range">2009 – 2013</div>
-                        <div class="item-title">Various Companies - Ecuador</div>
-                        <div class="item-subtitle">Travel Coordinator & Guide</div>
-                        <div class="item-description">
-                            <ul>
-                                <li>Developed and optimized trip itineraries and guided tours across Ecuador for several local companies, enhancing guest experience and operational efficiency.</li>
-                                <li>Led seasonal Humpback Whale Watching Tours.</li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Education Section -->
-        <div class="education-section section" id="education-section">
-            <h2>Education</h2>
-            <div class="education-grid">
-                <div class="education-card" data-logo-url="https://en.ad-education.com/wp-content/uploads/sites/2/2024/12/Logo-EMLV-2024-fond-bleu.jpg">
-                    <div class="edu-logo-overlay"></div>
-                    <div class="card-content">
-                        <i class="fas fa-graduation-cap edu-icon"></i> <!-- Graduation cap icon -->
-                        <div class="edu-date-range">2021-2022</div>
-                        <div class="edu-title">MBA Digital Marketing Strategy</div>
-                        <div class="edu-subtitle">EMLV - École de Management Leonard de Vinci</div>
-                        <div class="edu-location">Paris, France</div>
+                <div class="job-entry">
+                    <div class="job-header">
+                        <h3 class="job-title">Senior CRM Consultant</h3>
+                        <span class="job-date">Jan 2022 - Present</span>
+                    </div>
+                    <p class="job-company">Tech Solutions Inc., Berlin, Germany</p>
+                    <div class="job-description">
+                        <ul>
+                            <li>Led end-to-end Salesforce Sales Cloud and Service Cloud implementations for 5+ enterprise clients, resulting in an average 25% increase in sales efficiency.</li>
+                            <li>Designed and executed data migration strategies from legacy systems to Salesforce, ensuring data integrity and minimal disruption.</li>
+                            <li>Developed custom Salesforce reports and dashboards, providing key insights that improved decision-making for sales and marketing teams.</li>
+                            <li>Provided comprehensive training and ongoing support to end-users, achieving 95% user adoption rates across projects.</li>
+                            <li>Managed cross-functional teams, ensuring projects were delivered on time and within budget.</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="education-card" data-logo-url="https://images.seeklogo.com/logo-png/31/1/uleam-logo-png_seeklogo-315386.png">
-                    <div class="edu-logo-overlay"></div>
-                    <div class="card-content">
-                        <i class="fas fa-university edu-icon"></i> <!-- University icon -->
-                        <div class="edu-date-range">2008-2012</div>
-                        <div class="edu-title">B.A. in Tourism & Travel Management</div>
-                        <div class="edu-subtitle">ULEAM University</div>
-                        <div class="edu-location">Manta, Ecuador</div>
+
+                <div class="job-entry">
+                    <div class="job-header">
+                        <h3 class="job-title">Digital Transformation Manager</h3>
+                        <span class="job-date">Mar 2018 - Dec 2021</span>
+                    </div>
+                    <p class="job-company">Global Innovations Corp., Munich, Germany</p>
+                    <div class="job-description">
+                        <ul>
+                            <li>Spearheaded digital transformation initiatives, integrating CRM systems with marketing automation platforms (Pardot, Marketing Cloud) for enhanced lead nurturing.</li>
+                            <li>Managed a portfolio of 10+ digital projects, optimizing customer journeys and automating marketing campaigns, leading to a 30% increase in MQLs.</li>
+                            <li>Conducted detailed business analysis to identify digital gaps and opportunities, presenting solutions to executive leadership.</li>
+                            <li>Implemented agile methodologies for project delivery, improving team collaboration and project turnaround time by 20%.</li>
+                            <li>Collaborated with IT and sales departments to customize CRM functionalities, aligning them with business objectives.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="job-entry">
+                    <div class="job-header">
+                        <h3 class="job-title">CRM Administrator</h3>
+                        <span class="job-date">Apr 2015 - Feb 2018</span>
+                    </div>
+                    <p class="job-company">Enterprise Solutions GmbH, Frankfurt, Germany</p>
+                    <div class="job-description">
+                        <ul>
+                            <li>Maintained and configured Salesforce CRM, ensuring system stability and optimal performance for 500+ users.</li>
+                            <li>Provided first-line support for CRM-related issues, resolving 90% of tickets within 24 hours.</li>
+                            <li>Assisted in the development and deployment of new features and functionalities within Salesforce.</li>
+                            <li>Conducted regular data audits and clean-ups, maintaining a high level of data quality.</li>
+                            <li>Created user documentation and training materials to facilitate system understanding and adoption.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- IT Skills & Tools Section -->
-        <div class="skills-section section" id="skills-section">
-            <h2>IT Skills & Tools</h2>
+        <section id="skills" class="section">
+            <h2>Skills</h2>
             <div class="skills-grid">
                 <div class="skill-category-block">
-                    <div class="category-title">Software & CRM</div>
+                    <h3 class="category-title">CRM & Cloud Platforms</h3>
                     <ul class="skill-item-list">
-                        <li data-level="5">
+                        <li>
                             <div class="skill-info">
-                                <i class="fas fa-file-word skill-icon"></i>
-                                <span class="skill-name">Microsoft Office</span>
+                                <i class="fab fa-salesforce skill-icon"></i>
+                                <span class="skill-name">Salesforce Sales Cloud</span>
                             </div>
                             <div class="skill-level-bar">
-                                <div class="skill-level-fill" data-level-text="5/5"></div>
+                                <div class="skill-level-fill" style="width: 95%;" data-level-text="Expert"></div>
                             </div>
                         </li>
-                        <li data-level="5">
+                        <li>
                             <div class="skill-info">
-                                <i class="fas fa-cloud skill-icon"></i>
-                                <span class="skill-name">Google Workspace</span>
+                                <i class="fab fa-salesforce skill-icon"></i>
+                                <span class="skill-name">Salesforce Service Cloud</span>
                             </div>
                             <div class="skill-level-bar">
-                                <div class="skill-level-fill" data-level-text="5/5"></div>
+                                <div class="skill-level-fill" style="width: 90%;" data-level-text="Expert"></div>
                             </div>
                         </li>
-                        <li data-level="4">
+                        <li>
                             <div class="skill-info">
-                                <i class="fas fa-envelope-open-text skill-icon"></i>
-                                <span class="skill-name">BRAZE</span>
+                                <i class="fab fa-salesforce skill-icon"></i>
+                                <span class="skill-name">Salesforce Marketing Cloud</span>
                             </div>
                             <div class="skill-level-bar">
-                                <div class="skill-level-fill" data-level-text="4/5"></div>
+                                <div class="skill-level-fill" style="width: 85%;" data-level-text="Advanced"></div>
                             </div>
                         </li>
-                        <li data-level="4">
-                            <div class="skill-info">
-                                <i class="fas fa-people-group skill-icon"></i>
-                                <span class="skill-name">Atlassian Toolkit</span>
-                            </div>
-                            <div class="skill-level-bar">
-                                <div class="skill-level-fill" data-level-text="4/5"></div>
-                            </div>
-                        </li>
-                        <li data-level="4">
-                            <div class="skill-info">
-                                <i class="fas fa-mail-bulk skill-icon"></i>
-                                <span class="skill-name">Mapp-e-mail serv</span>
-                            </div>
-                            <div class="skill-level-bar">
-                                <div class="skill-level-fill" data-level-text="4/5"></div>
-                            </div>
-                        </li>
-                        <li data-level="4">
-                            <div class="skill-info">
-                                <i class="fas fa-handshake skill-icon"></i>
-                                <span class="skill-name">Salesforce</span>
-                            </div>
-                            <div class="skill-level-bar">
-                                <div class="skill-level-fill" data-level-text="4/5"></div>
-                            </div>
-                        </li>
-                        <li data-level="3">
-                            <div class="skill-info">
-                                <i class="fas fa-chart-bar skill-icon"></i>
-                                <span class="skill-name">Tableau</span>
-                            </div>
-                            <div class="skill-level-bar">
-                                <div class="skill-level-fill" data-level-text="3/5"></div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="skill-category-block">
-                    <div class="category-title">Data & Programming</div>
-                    <ul class="skill-item-list">
-                        <li data-level="3">
-                            <div class="skill-info">
-                                <i class="fas fa-code skill-icon"></i>
-                                <span class="skill-name">Python</span>
-                            </div>
-                            <div class="skill-level-bar">
-                                <div class="skill-level-fill" data-level-text="3/5"></div>
-                            </div>
-                        </li>
-                        <li data-level="3">
+                        <li>
                             <div class="skill-info">
                                 <i class="fas fa-chart-line skill-icon"></i>
-                                <span class="skill-name">R-studio</span>
+                                <span class="skill-name">Salesforce Pardot</span>
                             </div>
                             <div class="skill-level-bar">
-                                <div class="skill-level-fill" data-level-text="3/5"></div>
+                                <div class="skill-level-fill" style="width: 80%;" data-level-text="Advanced"></div>
                             </div>
                         </li>
-                        <li data-level="2">
+                    </ul>
+                </div>
+
+                <div class="skill-category-block">
+                    <h3 class="category-title">Business & Project Management</h3>
+                    <ul class="skill-item-list">
+                        <li>
+                            <div class="skill-info">
+                                <i class="fas fa-project-diagram skill-icon"></i>
+                                <span class="skill-name">Project Management</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" style="width: 90%;" data-level-text="Expert"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-info">
+                                <i class="fas fa-sync-alt skill-icon"></i>
+                                <span class="skill-name">Digital Transformation</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" style="width: 95%;" data-level-text="Expert"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-info">
+                                <i class="fas fa-chart-bar skill-icon"></i>
+                                <span class="skill-name">Business Analysis</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" style="width: 88%;" data-level-text="Advanced"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-info">
+                                <i class="fas fa-handshake skill-icon"></i>
+                                <span class="skill-name">Client Relationship Management</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" style="width: 92%;" data-level-text="Expert"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="skill-category-block">
+                    <h3 class="category-title">Technical & Data Skills</h3>
+                    <ul class="skill-item-list">
+                        <li>
                             <div class="skill-info">
                                 <i class="fas fa-database skill-icon"></i>
-                                <span class="skill-name">SQL</span>
+                                <span class="skill-name">Data Migration & Integration</span>
                             </div>
                             <div class="skill-level-bar">
-                                <div class="skill-level-fill" data-level-text="2/5"></div>
+                                <div class="skill-level-fill" style="width: 85%;" data-level-text="Advanced"></div>
                             </div>
                         </li>
-                        <li data-level="2">
+                        <li>
                             <div class="skill-info">
-                                <i class="fas fa-snowflake skill-icon"></i>
-                                <span class="skill-name">Snowflake DWH</span>
+                                <i class="fas fa-code skill-icon"></i>
+                                <span class="skill-name">Apex (Basic)</span>
                             </div>
                             <div class="skill-level-bar">
-                                <div class="skill-level-fill" data-level-text="2/5"></div>
+                                <div class="skill-level-fill" style="width: 60%;" data-level-text="Intermediate"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-info">
+                                <i class="fas fa-chart-pie skill-icon"></i>
+                                <span class="skill-name">Reporting & Dashboards</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" style="width: 90%;" data-level-text="Expert"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-info">
+                                <i class="fas fa-tools skill-icon"></i>
+                                <span class="skill-name">System Configuration</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" style="width: 90%;" data-level-text="Expert"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="skill-category-block">
+                    <h3 class="category-title">Marketing & Sales Enablement</h3>
+                    <ul class="skill-item-list">
+                        <li>
+                            <div class="skill-info">
+                                <i class="fas fa-bullhorn skill-icon"></i>
+                                <span class="skill-name">Marketing Automation</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" style="width: 85%;" data-level-text="Advanced"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-info">
+                                <i class="fas fa-laptop-code skill-icon"></i>
+                                <span class="skill-name">Lead Management</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" style="width: 90%;" data-level-text="Expert"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-info">
+                                <i class="fas fa-funnel-dollar skill-icon"></i>
+                                <span class="skill-name">Sales Process Optimization</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" style="width: 93%;" data-level-text="Expert"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-info">
+                                <i class="fas fa-users-cog skill-icon"></i>
+                                <span class="skill-name">User Training & Adoption</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" style="width: 95%;" data-level-text="Expert"></div>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Trainings & Certifications Section -->
-        <div class="certifications-section section" id="certifications-section">
+        <section id="trainings" class="section">
             <h2>Trainings & Certifications</h2>
             <div class="certifications-grid">
-                <div class="certification-card" data-logo-url="https://miro.medium.com/v2/resize:fit:1400/1*-ExxDAPl4rciaENKd8QSBw.png">
-                    <div class="cert-logo-overlay"></div>
+                <div class="certification-card">
+                    <div class="cert-logo-overlay" style="background-image: url('https://www.salesforce.com/content/dam/web/en_us/www/images/salesforce-social-sharing-logo.png');"></div>
                     <div class="card-content">
-                        <div class="cert-title"><a href="https://skillshop.credential.net/7007aa93-0ef5-41e2-844c-c1f3048666ce#acc.NCVdieEG" target="_blank">Google Analytics Certificate</a></div>
-                        <div class="cert-date">2025</div>
+                        <h3 class="cert-title"><a href="#" target="_blank">Salesforce Certified Administrator</a></h3>
+                        <p class="cert-subtitle">Salesforce</p>
+                        <p class="cert-date">Issued: Jan 2020</p>
                     </div>
                 </div>
-                <div class="certification-card" data-logo-url="https://logos-world.net/wp-content/uploads/2022/05/Google-AdWords-Logo.png">
-                    <div class="cert-logo-overlay"></div>
+                <div class="certification-card">
+                    <div class="cert-logo-overlay" style="background-image: url('https://www.salesforce.com/content/dam/web/en_us/www/images/salesforce-social-sharing-logo.png');"></div>
                     <div class="card-content">
-                        <div class="cert-title"><a href="https://skillshop.credential.net/cfa2aa7d-f19e-42bf-bb10-607daa4ef6c4#acc.o1PzwK9g" target="_blank">Google Ads Search Certificate</a></div>
-                        <div class="cert-date">2025</div>
+                        <h3 class="cert-title"><a href="#" target="_blank">Salesforce Certified Sales Cloud Consultant</a></h3>
+                        <p class="cert-subtitle">Salesforce</p>
+                        <p class="cert-date">Issued: Mar 2021</p>
                     </div>
                 </div>
-                <div class="certification-card" data-logo-url="https://media.licdn.com/dms/image/v2/C560BAQHaVYd13rRz3A/company-logo_200_200/company-logo_200_200/0/1638831590218/linkedin_logo?e=1756944000&v=beta&t=3YsPxA4uKbrnwqHYDdPfom7jRSTAnKMOF0eoxeM4WX4">
-                    <div class="cert-logo-overlay"></div>
+                <div class="certification-card">
+                    <div class="cert-logo-overlay" style="background-image: url('https://www.salesforce.com/content/dam/web/en_us/www/images/salesforce-social-sharing-logo.png');"></div>
                     <div class="card-content">
-                        <div class="cert-title">LinkedIn Advance SEO</div>
-                        <div class="cert-date">2022</div>
+                        <h3 class="cert-title"><a href="#" target="_blank">Salesforce Certified Service Cloud Consultant</a></h3>
+                        <p class="cert-subtitle">Salesforce</p>
+                        <p class="cert-date">Issued: Jun 2022</p>
                     </div>
                 </div>
-                <div class="certification-card" data-logo-url="https://media.licdn.com/dms/image/v2/D560BAQFGt4XAU9bF5w/company-logo_200_200/company-logo_200_200/0/1719518128249/hubspot_academy_logo?e=1756944000&v=beta&t=1DhMRmKHJoeI6qT6_7FKX-RpIx5rQpHJmw9uGqcVxpg">
-                    <div class="cert-logo-overlay"></div>
+                <div class="certification-card">
+                    <div class="cert-logo-overlay" style="background-image: url('https://www.salesforce.com/content/dam/web/en_us/www/images/salesforce-social-sharing-logo.png');"></div>
                     <div class="card-content">
-                        <div class="cert-title"><a href="https://app-eu1.hubspot.com/academy/achievements/h5jmqs6z/en/1/freddy-navarrete/seo" target="_blank">Hubspot Academy SEO</a></div>
-                        <div class="cert-date">2025</div>
+                        <h3 class="cert-title"><a href="#" target="_blank">Salesforce Certified Pardot Specialist</a></h3>
+                        <p class="cert-subtitle">Salesforce</p>
+                        <p class="cert-date">Issued: Sep 2022</p>
                     </div>
                 </div>
-                <div class="certification-card" data-logo-url="https://cdn.prod.website-files.com/65adf1a878ae17b8b4647663/65b74534cebba152b5263827_6481ebb4393bc80a1b8f7c9d_apple-ads.svg">
-                    <div class="cert-logo-overlay"></div>
+                <div class="certification-card">
+                    <div class="cert-logo-overlay" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Project_Management_Institute_%28PMI%29_logo.svg/1200px-Project_Management_Institute_%28PMI%29_logo.svg.png');"></div>
                     <div class="card-content">
-                        <div class="cert-title"><a href="https://certification-ads.apple.com/certificate/jpYdliNt6G" target="_blank">Apple Search Ads Certificate</a></div>
-                        <div class="cert-date">2025</div>
+                        <h3 class="cert-title"><a href="#" target="_blank">PMP - Project Management Professional</a></h3>
+                        <p class="cert-subtitle">Project Management Institute (PMI)</p>
+                        <p class="cert-date">Issued: Nov 2019</p>
                     </div>
                 </div>
-                <div class="certification-card" data-logo-url="https://media.licdn.com/dms/image/v2/C4E0BAQEezdLAylLIcw/company-logo_200_200/company-logo_200_200/0/1656678733945/hotjar_logo?e=1756944000&v=beta&t=WGqHaZ1FvEtg8J4wMXv6xMjgcNiTUp3b2375KBLXx-A">
-                    <div class="cert-logo-overlay"></div>
+                <div class="certification-card">
+                    <div class="cert-logo-overlay" style="background-image: url('https://www.scrum.org/sites/default/files/styles/card/public/2021-04/scrum.org-social-share.png?itok=G4L2R1S0');"></div>
                     <div class="card-content">
-                        <div class="cert-title"><a href="https://verify.skilljar.com/c/sjfxfr4x2u5p" target="_blank">HotJar: User experience optimisation</a></div>
-                        <div class="cert-date">N/A</div> <!-- Assuming no date provided -->
-                    </div>
-                </div>
-                <div class="certification-card" data-logo-url="https://1000logos.net/wp-content/uploads/2024/01/UC-Davis-logo.jpg">
-                    <div class="cert-logo-overlay"></div>
-                    <div class="card-content">
-                        <div class="cert-title"><a href="https://www.coursera.org/account/accomplishments/verify/TOO6JNEIZZN" target="_blank">Big Data, Artificial Intelligence, and Ethics</a></div>
-                        <div class="cert-subtitle">Certified by University of California, Davis</div>
-                        <div class="cert-date">2025</div>
+                        <h3 class="cert-title"><a href="#" target="_blank">Certified ScrumMaster (CSM)</a></h3>
+                        <p class="cert-subtitle">Scrum Alliance</p>
+                        <p class="cert-date">Issued: Feb 2020</p>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Languages Section -->
-        <div class="languages-section section" id="languages-section">
+        <section id="education" class="section">
+            <h2>Education</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <div class="edu-logo-overlay" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/HHL_Leipzig_Graduate_School_of_Management_Logo.png/800px-HHL_Leipzig_Graduate_School_of_Management_Logo.png');"></div>
+                    <div class="card-content">
+                        <i class="fas fa-graduation-cap edu-icon"></i>
+                        <p class="edu-date-range">2016 - 2018</p>
+                        <h3 class="edu-title">MBA in Digital Business</h3>
+                        <p class="edu-subtitle">HHL Leipzig Graduate School of Management</p>
+                        <p class="edu-location">Leipzig, Germany</p>
+                    </div>
+                </div>
+                <div class="education-card">
+                    <div class="edu-logo-overlay" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/University_of_Manchester_logo.svg/1200px-University_of_Manchester_logo.svg.png');"></div>
+                    <div class="card-content">
+                        <i class="fas fa-graduation-cap edu-icon"></i>
+                        <p class="edu-date-range">2011 - 2015</p>
+                        <h3 class="edu-title">B.Sc. in Business Administration</h3>
+                        <p class="edu-subtitle">The University of Manchester</p>
+                        <p class="edu-location">Manchester, UK</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="languages" class="section">
             <h2>Languages</h2>
             <div class="languages-grid">
                 <div class="language-card">
-                    <img src="https://flagcdn.com/w160/es.png" alt="Spanish Flag" class="language-flag">
-                    <div class="item-title">Spanish</div>
-                    <div class="item-subtitle">Native</div>
+                    <img src="https://flagicons.lipis.dev/flags/4x3/us.svg" alt="English Flag" class="language-flag">
+                    <h3 class="item-title">English</h3>
+                    <p class="item-subtitle">Native</p>
                 </div>
                 <div class="language-card">
-                    <img src="https://flagcdn.com/w160/gb.png" alt="English Flag" class="language-flag">
-                    <div class="item-title">English</div>
-                    <div class="item-subtitle">Fluent</div>
+                    <img src="https://flagicons.lipis.dev/flags/4x3/de.svg" alt="German Flag" class="language-flag">
+                    <h3 class="item-title">German</h3>
+                    <p class="item-subtitle">Fluent (C1)</p>
                 </div>
                 <div class="language-card">
-                    <img src="https://flagcdn.com/w160/fr.png" alt="French Flag" class="language-flag">
-                    <div class="item-title">French</div>
-                    <div class="item-subtitle">Professional Working Proficiency</div>
-                </div>
-                <div class="language-card">
-                    <img src="https://flagcdn.com/w160/br.png" alt="Portuguese Flag" class="language-flag">
-                    <div class="item-title">Portuguese</div>
-                    <div class="item-subtitle">Conversational</div>
+                    <img src="https://flagicons.lipis.dev/flags/4x3/es.svg" alt="Spanish Flag" class="language-flag">
+                    <h3 class="item-title">Spanish</h3>
+                    <p class="item-subtitle">Intermediate (B2)</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Miscellaneous Section -->
-        <div class="miscellaneous-section section" id="miscellaneous-section">
+        <section id="miscellaneous" class="section">
             <h2>Miscellaneous</h2>
             <div class="miscellaneous-grid">
                 <div class="miscellaneous-card">
                     <i class="fas fa-globe misc-icon"></i>
-                    <div class="misc-text">Nationality: Ecuadorian and French</div>
+                    <p class="misc-text">International experience working in diverse cultural environments (Germany, UK).</p>
+                </div>
+                <div class="miscellaneous-card">
+                    <i class="fas fa-lightbulb misc-icon"></i>
+                    <p class="misc-text">Strong problem-solving abilities and a proactive approach to challenges.</p>
                 </div>
                 <div class="miscellaneous-card">
                     <i class="fas fa-users misc-icon"></i>
-                    <div class="misc-text">AIESEC Alumni, former VP of AIESEC Manta's International Exchange Program (2006-2011)</div>
+                    <p class="misc-text">Excellent communication and interpersonal skills, adept at stakeholder management.</p>
                 </div>
                 <div class="miscellaneous-card">
-                    <i class="fas fa-music misc-icon"></i>
-                    <div class="misc-text">Music: Founded a music teaching company and home recording studio in Peru, with 15+ years of guitar-playing experience (Rock, Blues, and Funk).</div>
-                </div>
-                <div class="miscellaneous-card">
-                    <i class="fas fa-person-biking misc-icon"></i>
-                    <div class="misc-text">Sports: Gravel biking, Mountain biking (MTB), running, and trekking.</div>
-                </div>
-                <div class="miscellaneous-card">
-                    <i class="fas fa-plane-departure misc-icon"></i>
-                    <div class="misc-text">Enthusiastic traveler. Lived and worked in Ecuador, Brazil, Peru, France, and based in Munich since 2022.</div>
+                    <i class="fas fa-book misc-icon"></i>
+                    <p class="misc-text">Continuously learning and staying updated with the latest CRM and digital trends.</p>
                 </div>
             </div>
-        </div>
-
-        <footer>
-            <p>Handcrafted by Freddy Navarrete</p>
-            <div class="social-links mt-2">
-                <a href="mailto:navarretefreddy@gmail.com"><i class="fa fa-send"></i></a>
-                <a href="https://www.linkedin.com/in/freddy-navarrete" target="_blank"><i class="fab fa-linkedin"></i></a>
-            </div>
-        </footer>
-
+        </section>
     </div>
 
-    <!-- Typed.js CDN -->
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <footer>
+        <p>&copy; 2025 Freddy Navarrete. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://linkedin.com/in/freddynavarrete" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/freddynavarrete" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+    </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Typed.js for the tagline
-            var typed = new Typed('#typed-title', {
-                strings: [
-                    "CRM & E-mail Marketing Specialist",
-                    "Digital Marketing Strategist",
-                    "E-commerce"
-                ],
-                typeSpeed: 50,
-                backSpeed: 25,
-                backDelay: 1500,
-                loop: true,
-                showCursor: true,
-                cursorChar: '|',
+            // Smooth Scroll for Navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
             });
 
-            // Intersection Observer for scroll-reveal animations
+            // Section Scroll Reveal
             const sections = document.querySelectorAll('.section');
 
             const observerOptions = {
-                root: null, // viewport as the root
+                root: null,
                 rootMargin: '0px',
-                threshold: 0.1 // 10% of the section must be visible
+                threshold: 0.1
             };
 
-            const observer = new IntersectionObserver((entries, observer) => {
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target); // Stop observing once visible
+                        observer.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
 
             sections.forEach(section => {
-                observer.observe(section);
+                sectionObserver.observe(section);
             });
 
-            // Active class for nav links based on scroll position
+            // Navigation Active State on Scroll
             const navLinks = document.querySelectorAll('.main-nav a');
+            const navHeight = document.querySelector('.main-nav').offsetHeight;
 
             window.addEventListener('scroll', () => {
-                let current = '';
+                let currentSection = '';
+
                 sections.forEach(section => {
-                    const sectionRect = section.getBoundingClientRect();
-                    const offset = 70; // Height of the fixed nav bar
-                    if (sectionRect.top <= offset && sectionRect.bottom > offset) {
-                        current = section.getAttribute('id');
+                    const sectionTop = section.offsetTop - navHeight - 10; // Adjusted for fixed nav and a small buffer
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                        currentSection = section.getAttribute('id');
                     }
                 });
 
                 navLinks.forEach(link => {
                     link.classList.remove('active');
-                    if (link.getAttribute('href') === '#' + current) {
+                    if (link.getAttribute('href').includes(currentSection)) {
                         link.classList.add('active');
                     }
                 });
             });
 
-            // Skill bar animation and level display
-            const skillItems = document.querySelectorAll('.skill-item-list li');
-            skillItems.forEach(item => {
-                const level = parseInt(item.dataset.level);
-                const fillElement = item.querySelector('.skill-level-fill');
-                if (fillElement) {
-                    // Calculate width based on 5 levels, e.g., level 5 = 100%, level 1 = 20%
-                    const widthPercentage = (level / 5) * 100;
-                    fillElement.style.width = widthPercentage + '%';
+            // Hamburger Menu Functionality
+            const menuToggle = document.createElement('div');
+            menuToggle.classList.add('menu-toggle');
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>'; // Font Awesome hamburger icon
+            document.querySelector('.main-nav').prepend(menuToggle); // Add before the logo
+
+            const navUl = document.querySelector('.main-nav ul');
+
+            menuToggle.addEventListener('click', function() {
+                navUl.classList.toggle('open');
+                // Change icon
+                const icon = menuToggle.querySelector('i');
+                if (navUl.classList.contains('open')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times'); // 'X' icon when open
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
                 }
             });
 
-            // Certification card logo loading
-            const certCards = document.querySelectorAll('.certification-card');
-            certCards.forEach(card => {
-                const logoUrl = card.dataset.logoUrl;
-                const logoOverlay = card.querySelector('.cert-logo-overlay');
-                if (logoOverlay && logoUrl) {
-                    logoOverlay.style.backgroundImage = `url('${logoUrl}')`;
-                }
-            });
-
-            // Education card logo loading
-            const eduCards = document.querySelectorAll('.education-card');
-            eduCards.forEach(card => {
-                const logoUrl = card.dataset.logoUrl;
-                const logoOverlay = card.querySelector('.edu-logo-overlay');
-                if (logoOverlay && logoUrl) {
-                    logoOverlay.style.backgroundImage = `url('${logoUrl}')`;
-                }
+            // Close menu when a link is clicked
+            navUl.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) { // Only close on mobile click
+                        navUl.classList.remove('open');
+                        menuToggle.querySelector('i').classList.remove('fa-times');
+                        menuToggle.querySelector('i').classList.add('fa-bars');
+                    }
+                });
             });
         });
     </script>
