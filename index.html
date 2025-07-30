@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freddy Navarrete - Professional Curriculum Vitae</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Playfair Display SC and Lato -->
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display+SC:700&display=swap' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,600,700&display=swap' rel='stylesheet' type='text/css'>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base styles for smooth scrolling and body padding */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #F0F2F5; /* A slightly cooler, professional light gray */
+            color: #333F4D; /* Darker, more professional text color */
+            line-height: 1.7; /* Increased line height for readability */
+            padding-top: 70px; /* Space for fixed navigation bar */
+            position: relative;
+            z-index: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll due to animations */
+        }
+
+        /* Global CRM background for the entire page */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://static.vecteezy.com/system/resources/thumbnails/023/585/365/small_2x/customer-relationship-management-crm-strategy-or-software-to-follow-up-on-sales-customer-service-check-customer-relationship-building-creating-satisfaction-and-confidence-for-customers-free-photo.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Parallax effect for global background */
+            opacity: 0.03; /* Even lighter watermark effect */
+            z-index: -1;
+        }
+
+        /* Main wrapper for the CV content */
+        .main-wrapper {
+            max-width: 960px; /* Slightly wider for a more spacious feel */
+            margin: 2.5rem auto; /* Increased margin */
+            background-color: #ffffff;
+            border-radius: 1rem; /* More rounded corners */
+            /* Sophisticated multi-layered shadow */
+            box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.2), 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            border: 1px solid #E0E6ED; /* Subtle border */
+        }
+
+        /* Individual sections */
+        .section {
+            padding: 3rem 2.5rem; /* More generous padding */
+            opacity: 0; /* Hidden by default for scroll-reveal */
+            transform: translateY(20px); /* Slightly moved down for scroll-reveal */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth transition */
+        }
+        .section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        /* Navigation Bar Styles */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(44, 62, 80, 0.85); /* Semi-transparent background */
+            backdrop-filter: blur(8px); /* Frosted glass effect */
+            -webkit-backdrop-filter: blur(8px); /* Safari support */
+            color: #ECF0F1;
+            z-index: 1000;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.25); /* Stronger shadow for nav */
+            padding: 0.9rem 0; /* Slightly more padding */
+            text-align: center;
+        }
+        .main-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .main-nav li {
+            margin: 0 1.2rem; /* Increased margin between nav items */
+        }
+        .main-nav a {
+            color: #ECF0F1;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem; /* Slightly smaller for sleekness */
+            padding: 0.6rem 0.9rem;
+            border-radius: 0.4rem; /* More rounded */
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+        }
+        .main-nav a:hover, .main-nav a.active {
+            background-color: #3498DB; /* Vibrant tech blue */
+            color: #ffffff;
+            transform: translateY(-2px); /* Subtle lift on hover */
+        }
+
+        /* Header/Intro Section */
+        .intro-section {
+            background: linear-gradient(135deg, #2C3E50 0%, #34495E 100%); /* Subtle gradient for depth */
+            color: #ECF0F1;
+            text-align: center;
+            padding: 4rem 2.5rem;
+            position: relative;
+            border-bottom: 2px solid #3498DB;
+            overflow: hidden;
+        }
+        .intro-section::before { /* Background image and its effects */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://img.freepik.com/premium-photo/concept-crm-customer-relationship-management-abstract-scheme-work-background-laptop-phone_102583-6349.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Parallax effect */
+            background-blend-mode: overlay; /* Blend with the gradient */
+            filter: brightness(0.9); /* Slightly less dark, let image show more */
+            z-index: 0;
+        }
+
+        /* Keyframes for subtle gradient animation */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .intro-section::after { /* The existing overlay for text readability, now with animation */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.853) 0%, rgba(3, 12, 20, 0.83) 50%, rgba(16, 66, 99, 0.4) 100%); /* Subtle gradient */
+            background-size: 200% 200%; /* Larger background for animation */
+            animation: gradientShift 15s ease infinite; /* Apply animation */
+            z-index: 1;
+        }
+        .intro-section > * { /* Ensure content is above both pseudo-elements */
+            position: relative;
+            z-index: 2;
+        }
+
+        .intro-section .profile-picture {
+            width: 150px; /* Slightly larger profile picture */
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid #ffffff; /* Thicker border */
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4); /* Deeper shadow */
+            margin: 0 auto 1.8rem;
+            display: block;
+            background-color: #d1d5db;
+        }
+        .intro-section h1 {
+            font-size: 4rem; /* Even larger name */
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.05em; /* Slight letter spacing for name */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Subtle text shadow */
+        }
+        .intro-section h1:before {
+            content: "Hi, I'm";
+            display: block;
+            font-size: 1.3rem; /* Slightly larger intro text */
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            color: #BDC3C7;
+            margin-bottom: 0.6rem;
+        }
+        .intro-section .tagline {
+            font-size: 1.6rem; /* Larger tagline */
+            color: #BDC3C7;
+            margin-bottom: 2rem; /* More space below tagline */
+            font-weight: 300; /* Lighter weight for tagline */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
+        }
+        .intro-section .contact-info {
+            font-size: 1.05rem; /* Slightly larger contact info */
+            color: #BDC3C7;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem; /* Space between contact items */
+        }
+        .intro-section .contact-info p {
+            margin-bottom: 0; /* Remove default paragraph margin */
+        }
+        /* Unified styling for all elements with the contact-item-box class */
+        .contact-item-box {
+            color: #ECF0F1;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            background-color: rgba(52, 152, 219, 0.2);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px); /* Safari support */
+            transition: all 0.3s ease; /* Unified transition */
+            display: inline-flex; /* Ensure flex properties are applied */
+            align-items: center;
+            text-decoration: none; /* Default for all, will be overridden for links on hover if needed */
+        }
+        /* Hover effect for any element with contact-item-box class */
+        .contact-item-box:hover {
+            color: #ffffff;
+            background-color: #3498DB; /* Vibrant tech blue on hover */
+            transform: translateY(-3px); /* Subtle lift on hover */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Shadow on hover */
+        }
+        .intro-section .contact-info i {
+            margin-right: 0.6rem; /* More space for icons */
+            font-size: 1.1em; /* Slightly larger icons */
+        }
+
+        /* Section Headings */
+        h2 {
+            font-size: 2.5rem; /* Larger section titles */
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 2rem; /* More space below heading */
+            text-transform: uppercase;
+            letter-spacing: 0.1em; /* More pronounced letter spacing */
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.75rem; /* More space for underline effect */
+            color: #2C3E50; /* Darker heading color */
+        }
+        h2:after {
+            content: '';
+            display: block;
+            width: 80px; /* Longer underline */
+            height: 4px; /* Thicker underline */
+            background-color: #3498DB; /* Vibrant tech blue accent */
+            margin: 0.75rem auto 0;
+            border-radius: 2px; /* Rounded ends for underline */
+            transition: width 0.4s ease-out; /* Smooth transition for underline */
+        }
+
+        /* List Styles (General) */
+        .content-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .content-list li {
+            margin-bottom: 1.8rem; /* More space between list items */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .content-list li:last-child {
+            margin-bottom: 0;
+        }
+        .content-list .date-range {
+            font-size: 1rem; /* Slightly larger date range */
+            font-weight: 700;
+            color: #556270; /* Slightly softer dark gray */
+            margin-bottom: 0.35rem;
+        }
+        .content-list .item-title {
+            font-size: 1.4rem; /* Larger item title */
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.35rem;
+        }
+        .content-list .item-subtitle {
+            font-size: 1.2rem; /* Larger subtitle */
+            color: #4b5563;
+            margin-bottom: 0.75rem; /* More space below subtitle */
+        }
+        .content-list .item-description {
+            font-size: 1rem; /* Standard description font size */
+            color: #6b7280;
+            max-width: 750px; /* Wider for better flow */
+            margin-top: 0.75rem;
+            text-align: justify;
+            padding: 0 1rem; /* Small horizontal padding for text block */
+        }
+        .content-list .item-description ul {
+            list-style: none; /* Remove default list style */
+            padding: 0;
+            margin: 0;
+        }
+        .content-list .item-description ul li { /* Specific style for bullet points within descriptions */
+            text-align: left;
+            margin-bottom: 0.5rem; /* More space between bullet points */
+            align-items: flex-start;
+            position: relative; /* For custom bullet */
+            padding-left: 1.5rem; /* Space for custom bullet */
+            color: #374151; /* Darker text for bullet points */
+        }
+        .content-list .item-description ul li::before {
+            content: '\2713'; /* Checkmark icon */
+            font-family: 'Font Awesome 5 Free'; /* Use Font Awesome */
+            font-weight: 900; /* Solid icon */
+            color: #3498DB; /* Accent color for checkmark */
+            position: absolute;
+            left: 0;
+            top: 0.15rem; /* Adjust vertical alignment */
+            font-size: 0.9em; /* Smaller checkmark */
+        }
+        .content-list .item-description h4 {
+            font-weight: 600;
+            margin-top: 1rem;
+            margin-bottom: 0.4rem;
+            text-align: center;
+            color: #2C3E50;
+        }
+        .content-list .item-description p {
+            margin-bottom: 0.75rem;
+        }
+
+        /* Skills Section specific - Enhanced Tech Visual */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem; /* Increased gap */
+            margin-top: 1.5rem;
+        }
+        .skill-category-block {
+            background-color: #F8F9FA; /* Very light background for skill categories */
+            border: 1px solid #DDE1E6; /* Subtle border */
+            border-radius: 0.75rem; /* More rounded */
+            padding: 2rem; /* More padding */
+            text-align: center;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* Deeper shadow */
+            flex: 1 1 calc(50% - 2rem);
+            max-width: 450px; /* Max width for each skill block */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .skill-category-block:hover {
+            transform: translateY(-8px); /* More pronounced lift effect */
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2); /* Stronger shadow on hover */
+        }
+        .skill-category-block .category-title {
+            font-weight: 700;
+            color: #3498DB;
+            font-size: 1.3rem; /* Larger title */
+            margin-bottom: 1.2rem; /* More space below title */
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .skill-category-block .skill-item-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex; /* Enable flex for items */
+            flex-direction: column; /* Stack items vertically */
+            align-items: flex-start; /* Align items to the start */
+            width: 100%; /* Take full width of parent */
+        }
+        .skill-category-block .skill-item-list li {
+            margin-bottom: 1rem; /* More space between skill items */
+            font-size: 1rem; /* Standard font size for skill items */
+            color: #4b5563;
+            text-align: left; /* Align text to left */
+            display: flex; /* Enable flex for content within li */
+            flex-direction: column; /* Stack icon/name and bar vertically */
+            align-items: flex-start; /* Align content to start */
+            width: 100%; /* Take full width */
+        }
+        .skill-item-list li .skill-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem; /* Space between icon and text */
+            margin-bottom: 0.5rem; /* Space between info and bar */
+        }
+        .skill-item-list li .skill-icon {
+            font-size: 1.5rem; /* Size of the skill icon */
+            color: #556270; /* Color of the skill icon */
+        }
+        .skill-item-list li .skill-name {
+            font-weight: 600;
+            color: #2C3E50;
+        }
+
+        /* Skill Level Bar Styles */
+        .skill-level-bar {
+            width: 100%;
+            background-color: #E0E6ED; /* Light gray background for the bar */
+            border-radius: 0.5rem; /* Rounded corners for the bar */
+            height: 10px; /* Height of the bar */
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-level-fill {
+            height: 100%;
+            background-color: #3498DB; /* Blue fill color */
+            border-radius: 0.5rem;
+            transition: width 1s ease-out; /* Smooth animation for fill */
+            position: relative;
+        }
+
+        .skill-level-fill::after {
+            content: attr(data-level-text); /* Display level text */
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            opacity: 0; /* Hidden by default */
+            transition: opacity 0.3s ease-in-out;
+            text-shadow: 0 0 3px rgba(0,0,0,0.3);
+        }
+
+        .skill-level-bar:hover .skill-level-fill::after {
+            opacity: 1; /* Show on hover */
+        }
+
+
+        /* Trainings & Certifications Section - New Layout */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid columns */
+            gap: 1.5rem; /* Gap between cards */
+            margin-top: 1.5rem;
+            justify-content: center; /* Center items in the grid */
+        }
+
+        .certification-card {
+            background-color: #F8F9FA;
+            border: 1px solid #DDE1E6;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s ease 0.3s, filter 0.3s ease; /* Added filter transition */
+            position: relative; /* Needed for absolute positioning of overlay */
+            overflow: hidden; /* Hide overflow of overlay */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 180px; /* Fixed height for consistent card size */
+            cursor: pointer;
+            z-index: 1; /* Default z-index */
+        }
+
+        .certification-card:hover {
+            transform: translateY(-10px) scale(1.05) perspective(1000px) rotateX(2deg); /* Added 3D tilt */
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2); /* Stronger shadow */
+            filter: brightness(1.05); /* Subtle brightness increase */
+            z-index: 10; /* Bring hovered card to the front immediately */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s ease 0s, filter 0.3s ease; /* z-index changes immediately */
+        }
+
+        .certification-card .card-content {
+            position: relative;
+            z-index: 2; /* Ensure content is above the logo overlay */
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .certification-card .cert-logo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 0px; /* Start hidden */
+            opacity: 0;
+            filter: grayscale(100%);
+            transition: all 0.3s ease-in-out; /* Faster transition for logo */
+            z-index: 1; /* Below content */
+        }
+
+        /* Hover effect for the logo overlay */
+        .certification-card:hover .cert-logo-overlay {
+            background-size: 100px; /* Logo appears */
+            opacity: 0.2; /* More visible */
+            filter: grayscale(0%); /* Full color */
+        }
+
+        .certification-card .cert-title {
+            font-weight: 700;
+            color: #2C3E50;
+            font-size: 1.15rem; /* Slightly larger title */
+            margin-bottom: 0.5rem;
+        }
+        .certification-card .cert-title a {
+            color: inherit; /* Inherit color from parent */
+            text-decoration: none; /* Remove underline by default */
+            transition: color 0.3s ease;
+        }
+        .certification-card .cert-title a:hover {
+            color: #3498DB; /* Change color on hover */
+            text-decoration: underline; /* Add underline on hover */
+        }
+
+        .certification-card .cert-subtitle {
+            font-size: 0.95rem;
+            color: #556270;
+            margin-bottom: 0.75rem;
+        }
+
+        .certification-card .cert-date {
+            font-size: 0.9rem;
+            color: #7F8C8D; /* Softer gray for date */
+            font-weight: 600;
+        }
+
+        /* Languages Section - New Layout */
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive grid columns, smaller cards */
+            gap: 1.2rem; /* Gap between cards */
+            margin-top: 1.5rem;
+            justify-content: center; /* Center items in the grid */
+        }
+
+        .language-card {
+            background-color: #F8F9FA;
+            border: 1px solid #DDE1E6;
+            border-radius: 0.75rem;
+            padding: 1rem; /* Smaller padding */
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease; /* Added filter transition */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .language-card:hover {
+            transform: translateY(-5px) perspective(1000px) rotateY(2deg); /* Added 3D tilt */
+            box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+            filter: brightness(1.05); /* Subtle brightness increase */
+        }
+
+        .language-card .language-flag {
+            width: 45px; /* Size of the flag */
+            height: 45px;
+            border-radius: 50%; /* Make flags circular */
+            object-fit: cover;
+            margin-bottom: 0.75rem;
+            border: 1px solid #BDC3C7; /* Subtle border around flag */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .language-card .item-title {
+            font-weight: 700;
+            color: #2C3E50;
+            font-size: 1.1rem; /* Slightly smaller title for language */
+            margin-bottom: 0.2rem;
+        }
+
+        .language-card .item-subtitle {
+            font-size: 0.9rem;
+            color: #556270;
+        }
+
+        /* Education Section - New Layout */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Two columns on larger screens */
+            gap: 1.5rem; /* Space between cards */
+            margin-top: 1.5rem;
+            justify-content: center; /* Center the grid items */
+        }
+
+        .education-card {
+            background-color: #F8F9FA;
+            border: 1px solid #DDE1E6;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s ease 0.3s, filter 0.3s ease; /* Added filter transition */
+            position: relative; /* Needed for absolute positioning of overlay */
+            overflow: hidden; /* Hide overflow of overlay */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 200px; /* Slightly taller for education cards */
+            cursor: pointer;
+            z-index: 1; /* Default z-index */
+        }
+
+        .education-card:hover {
+            transform: translateY(-10px) scale(1.05) perspective(1000px) rotateX(2deg); /* Added 3D tilt */
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2); /* Stronger shadow */
+            filter: brightness(1.05); /* Subtle brightness increase */
+            z-index: 10; /* Bring hovered card to the front immediately */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s ease 0s, filter 0.3s ease; /* z-index changes immediately */
+        }
+
+        .education-card .card-content {
+            position: relative;
+            z-index: 2; /* Ensure content is above the logo overlay */
+            display: flex; /* Use flexbox for internal content alignment */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%; /* Take full height of parent */
+            width: 100%; /* Take full width of parent */
+            padding: 0.5rem; /* Add some padding to content to prevent text touching edges */
+        }
+
+        .education-card .edu-logo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 0px; /* Start hidden */
+            opacity: 0;
+            filter: grayscale(100%);
+            transition: all 0.3s ease-in-out; /* Faster transition for logo */
+            z-index: 1; /* Below content */
+        }
+
+        /* Hover effect for the logo overlay */
+        .education-card:hover .edu-logo-overlay {
+            /* Specific adjustments for the ULEAM logo, which is wider */
+            background-size: 120px; /* Increased size for wider logos like ULEAM */
+            opacity: 0.15; /* Adjusted opacity for subtlety */
+            filter: grayscale(0%); /* Full color */
+        }
+
+
+        .education-card .edu-icon {
+            font-size: 2.8rem; /* Larger icon */
+            color: #3498DB; /* Accent color for icon */
+            margin-bottom: 0.75rem; /* Reduced margin for better spacing */
+            position: relative; /* Ensure icon is above overlay */
+            z-index: 2;
+        }
+
+        .education-card .edu-date-range {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #556270;
+            margin-bottom: 0.25rem; /* Reduced margin for better spacing */
+            position: relative; /* Ensure text is above overlay */
+            z-index: 2;
+        }
+
+        .education-card .edu-title {
+            font-weight: 700;
+            color: #2C3E50;
+            font-size: 1.25rem;
+            margin-bottom: 0.35rem; /* Reduced margin for better spacing */
+            position: relative; /* Ensure text is above overlay */
+            z-index: 2;
+        }
+
+        .education-card .edu-subtitle {
+            font-size: 1.05rem;
+            color: #4b5563;
+            margin-bottom: 0.5rem; /* Reduced margin for better spacing */
+            position: relative; /* Ensure text is above overlay */
+            z-index: 2;
+        }
+
+        .education-card .edu-location {
+            font-size: 0.95rem;
+            color: #6b7280;
+            position: relative; /* Ensure text is above overlay */
+            z-index: 2;
+        }
+
+        /* Miscellaneous Section - New Layout */
+        .miscellaneous-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Flexible grid for misc items */
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+
+        .miscellaneous-card {
+            background-color: #F8F9FA;
+            border: 1px solid #DDE1E6;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease; /* Added filter transition */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .miscellaneous-card:hover {
+            transform: translateY(-5px) perspective(1000px) rotateY(-2deg); /* Added 3D tilt */
+            box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+            filter: brightness(1.05); /* Subtle brightness increase */
+        }
+
+        .miscellaneous-card .misc-icon {
+            font-size: 2.5rem;
+            color: #3498DB;
+            margin-bottom: 1rem;
+        }
+
+        .miscellaneous-card .misc-text {
+            font-size: 1rem;
+            color: #4b5563;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2C3E50;
+            color: #ECF0F1;
+            padding: 2rem 2.5rem; /* More padding */
+            text-align: center;
+            font-size: 0.95rem; /* Slightly larger footer text */
+        }
+        footer .social-links a {
+            color: #3498DB;
+            margin: 0 1rem; /* More space for social icons */
+            font-size: 1.4rem; /* Larger social icons */
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        footer .social-links a:hover {
+            color: #ffffff;
+            transform: translateY(-3px); /* Subtle lift on hover */
+        }
+
+        /* Work Experience Timeline */
+        .timeline-container {
+            position: relative;
+            padding-left: 30px; /* Space for the line and dots */
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 800px; /* Constrain timeline width */
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 15px; /* Position the line */
+            top: 0;
+            bottom: 0;
+            width: 3px; /* Thickness of the line */
+            background-color: #BDC3C7; /* Light gray line */
+            border-radius: 2px;
+        }
+
+        .job-entry {
+            position: relative;
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.5rem 2rem; /* Adjusted padding for better visual balance */
+            margin-bottom: 2.5rem; /* More space between entries */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Slightly stronger initial shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 1; /* Ensure cards are above the line */
+            border: 1px solid #EAECEF; /* Subtle border */
+            overflow: hidden; /* Ensure pseudo-element doesn't overflow */
+        }
+
+        .job-entry:hover {
+            transform: translateY(-8px); /* More pronounced lift */
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15); /* Stronger shadow on hover */
+        }
+
+        .job-entry::after { /* The dot on the timeline */
+            content: '';
+            position: absolute;
+            left: -25px; /* Position relative to the card, aligns with the line */
+            top: 1.5rem; /* Align with the top of the card */
+            width: 18px;
+            height: 18px;
+            background-color: #3498DB; /* Accent color for the dot */
+            border: 3px solid #ffffff; /* White border around the dot */
+            border-radius: 50%;
+            z-index: 2; /* Ensure dot is on top */
+            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.3); /* Subtle glow around the dot */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for dot */
+        }
+
+        /* Watermarks (adjust position based on new padding) */
+        .job-entry::before {
+            content: '';
+            position: absolute;
+            top: 0; /* Cover the whole block */
+            left: 0; /* Cover the whole block */
+            width: 100%; /* Cover the whole block */
+            height: 100%; /* Cover the whole block */
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover; /* Make image cover the entire block */
+            opacity: 0.05; /* Very subtle by default */
+            filter: grayscale(100%) brightness(1.1); /* Start grayscale */
+            transition: all 0.4s ease-in-out; /* Smooth transition for all properties */
+            z-index: -1; /* Behind content */
+        }
+
+        /* Specific company watermarks and hover effects */
+        .job-entry.westwing-watermark::before {
+            background-image: url('https://www.webspotting.de/wp-content/uploads/2024/01/westwing-se-600.png');
+        }
+        .job-entry.westwing-watermark:hover::before {
+            opacity: 0.15; /* More visible on hover */
+            filter: grayscale(0%); /* Full color on hover */
+        }
+
+        .job-entry.explorandes-watermark::before {
+            background-image: url('https://s3-eu-west-1.amazonaws.com/tpd/logos/5abbd0de719bac0001a90542/0x0.png');
+        }
+        .job-entry.explorandes-watermark:hover::before {
+            opacity: 0.15; /* More visible on hover */
+            filter: grayscale(0%); /* Full color on hover */
+        }
+
+        .job-entry.casanuestra-watermark::before {
+            background-image: url('https://www.casanuestraperu.com/wp-content/uploads/2023/10/cn_logo_24-1.png');
+        }
+        .job-entry.casanuestra-watermark:hover::before {
+            opacity: 0.15; /* More visible on hover */
+            filter: grayscale(0%); /* Full color on hover */
+        }
+
+
+
+        /* Key achievements styling */
+        .item-description h4 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem; /* Space between text and icon */
+            font-weight: 700; /* Make it bolder */
+            color: #2C3E50;
+            margin-top: 1.5rem; /* More space above achievements */
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem; /* Slightly larger achievement heading */
+        }
+        .item-description h4 i {
+            color: #27AE60; /* Green color for achievement icon */
+            font-size: 1.2em;
+        }
+
+        /* Refined bullet points for job descriptions */
+        .content-list .item-description ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .content-list .item-description ul li {
+            text-align: left;
+            margin-bottom: 0.7rem; /* Increased space between bullet points */
+            position: relative;
+            padding-left: 2rem; /* More space for the checkmark */
+            font-size: 1rem; /* Consistent font size */
+            color: #374151;
+        }
+        .content-list .item-description ul li::before {
+            content: '\f058'; /* Font Awesome check-circle icon */
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: #27AE60; /* Green checkmark */
+            position: absolute;
+            left: 0;
+            top: 0.05rem; /* Fine-tune vertical alignment */
+            font-size: 1.1em; /* Slightly larger icon */
+        }
+
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 90px;
+            }
+            .main-wrapper {
+                margin: 0.5rem;
+                border-radius: 0;
+                box-shadow: none; /* Lighter shadow on mobile */
+            }
+            .main-nav ul {
+                flex-direction: column;
+            }
+            .main-nav li {
+                margin: 0.25rem 0;
+            }
+            .intro-section {
+                padding: 2.5rem 1.5rem;
+            }
+            .intro-section .profile-picture {
+                width: 120px;
+                height: 120px;
+            }
+            .intro-section h1 {
+                font-size: 3rem;
+            }
+            .intro-section h1:before {
+                font-size: 1.1rem;
+            }
+            .intro-section .tagline {
+                font-size: 1.3rem;
+            }
+            .intro-section .contact-info {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            .section {
+                padding: 2rem 1.5rem;
+            }
+            .section h2 {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+            .content-list li {
+                margin-bottom: 1.5rem;
+            }
+            .content-list .item-title {
+                font-size: 1.2rem;
+            }
+            .content-list .item-subtitle {
+                font-size: 1.1rem;
+            }
+            .content-list .item-description {
+                font-size: 0.95rem;
+                text-align: left;
+                padding: 0;
+            }
+            .content-list .item-description ul {
+                margin-left: 1.5rem; /* Adjust indent for mobile */
+            }
+            .content-list .item-description ul li {
+                padding-left: 1.8rem; /* Adjust padding for mobile */
+            }
+            .content-list .item-description ul li::before {
+                top: 0.2rem; /* Adjust vertical alignment for mobile */
+            }
+            .skills-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            .skill-category-block {
+                width: 90%; /* Adjust width for mobile */
+                max-width: 350px;
+                padding: 1.5rem;
+            }
+            .skill-category-block .category-title {
+                font-size: 1.1rem;
+            }
+            .skill-item-list li {
+                flex-direction: column; /* Stack icon/name and bar vertically */
+                align-items: flex-start; /* Align content to start */
+            }
+            .job-entry::before {
+                /* On mobile, keep it as a subtle watermark, not full cover */
+                width: 80px;
+                height: 80px;
+                right: 0.5rem;
+                background-size: contain; /* Revert to contain for mobile watermark */
+                opacity: 0.12;
+                filter: grayscale(100%) brightness(1.1);
+                transition: none; /* No hover transition for mobile watermark */
+            }
+            .job-entry:hover::before {
+                /* Disable hover effects for mobile if it's a small watermark */
+                opacity: 0.12;
+                filter: grayscale(100%) brightness(1.1);
+                background-size: contain;
+            }
+            .certifications-grid {
+                grid-template-columns: 1fr; /* Stack cards on mobile */
+                gap: 1rem;
+            }
+            .languages-grid {
+                grid-template-columns: 1fr; /* Stack language cards on mobile */
+                gap: 1rem;
+            }
+            .language-card {
+                width: 90%;
+                max-width: 250px;
+                padding: 1.2rem;
+            }
+            .education-grid {
+                grid-template-columns: 1fr; /* Stack education cards on mobile */
+                gap: 1rem;
+            }
+            .education-card {
+                width: 90%;
+                max-width: 350px;
+                padding: 1.5rem;
+            }
+            .miscellaneous-grid {
+                grid-template-columns: 1fr; /* Stack misc cards on mobile */
+                gap: 1rem;
+            }
+            .miscellaneous-card {
+                width: 90%;
+                max-width: 300px;
+                padding: 1.2rem;
+            }
+            /* Timeline adjustments for mobile */
+            .timeline-container {
+                padding-left: 20px; /* Adjust for smaller screens */
+            }
+            .timeline-container::before {
+                left: 10px;
+            }
+            .job-entry::after {
+                left: -15px; /* Adjust dot position for smaller screens */
+                width: 14px;
+                height: 14px;
+                border: 2px solid #ffffff;
+                box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+            }
+            .job-entry {
+                padding: 1rem 1.5rem; /* Adjust padding */
+                margin-bottom: 2rem;
+            }
+            footer {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Print specific styles */
+        @media print {
+            body {
+                padding-top: 0;
+                background-color: #fff;
+            }
+            body::before {
+                opacity: 0.01; /* Even lighter for print */
+            }
+            .main-nav {
+                display: none;
+            }
+            .main-wrapper {
+                box-shadow: none;
+                border-radius: 0;
+                margin: 0;
+                max-width: none;
+                border: none;
+            }
+            .intro-section {
+                padding: 1.5rem 1rem;
+                border-bottom: 1px solid #eee;
+                background-image: none; /* Hide background image for print */
+                filter: none; /* Remove filter for print */
+            }
+            .intro-section::after {
+                display: none; /* Hide overlay for print */
+            }
+            .intro-section .profile-picture {
+                display: none;
+            }
+            .intro-section h1:before {
+                font-size: 0.9rem;
+            }
+            .intro-section h1 {
+                font-size: 2.5rem;
+                margin-top: 0;
+            }
+            .intro-section .tagline {
+                font-size: 1.1rem;
+            }
+            .intro-section .contact-info {
+                gap: 0.5rem;
+            }
+            .intro-section .contact-info a {
+                color: #333; /* Darker links for print */
+            }
+            .section {
+                padding: 1rem;
+                border-bottom: 1px solid #eee;
+            }
+            .section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 0.75rem;
+                color: #333;
+            }
+            .section h2:after {
+                width: 50px;
+                height: 2px;
+                background-color: #333;
+            }
+            .content-list li {
+                margin-bottom: 0.75rem;
+            }
+            .content-list .item-title {
+                font-size: 1.1rem;
+                color: #333;
+            }
+            .content-list .item-subtitle {
+                font-size: 1rem;
+                color: #555;
+            }
+            .content-list .item-description {
+                font-size: 0.9rem;
+                color: #666;
+                padding: 0;
+            }
+            .content-list .item-description ul {
+                margin-left: 1rem;
+                padding-left: 0.2rem;
+                font-size: 0.85rem;
+                color: #444;
+            }
+            .content-list .item-description ul li::before {
+                content: ''; /* Remove custom bullet for print */
+            }
+            .content-list .item-description h4 {
+                color: #333;
+            }
+            .skills-grid {
+                display: block;
+            }
+            .skill-category-block {
+                width: auto;
+                max-width: none;
+                padding: 0.75rem 0;
+                box-shadow: none;
+                border: none;
+                border-bottom: 1px dashed #ddd;
+                margin-bottom: 0.75rem;
+                background-color: transparent;
+            }
+            .skill-category-block:last-child {
+                border-bottom: none;
+            }
+            .skill-category-block .category-title {
+                color: #333;
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
+            }
+            .skill-category-block .skill-item-list li {
+                font-size: 0.9rem;
+                color: #555;
+            }
+            .job-entry {
+                box-shadow: none;
+                border: none;
+                padding: 1rem 0;
+                margin-bottom: 1rem;
+            }
+            .job-entry::before {
+                display: none; /* Hide watermarks in print */
+            }
+            .certifications-grid {
+                display: block; /* Revert to block for print */
+            }
+            .certification-card {
+                box-shadow: none;
+                border: none;
+                padding: 0.75rem 0;
+                margin-bottom: 0.75rem;
+                border-bottom: 1px dashed #ddd;
+                background-color: transparent;
+            }
+            .certification-card .cert-logo-overlay {
+                display: none; /* Hide watermarks in print */
+            }
+            .certification-card .cert-title {
+                color: #333;
+                font-size: 1rem;
+                margin-bottom: 0.2rem;
+            }
+            .certification-card .cert-subtitle {
+                color: #555;
+                font-size: 0.9rem;
+                margin-bottom: 0.2rem;
+            }
+            .certification-card .cert-date {
+                color: #666;
+                font-size: 0.85rem;
+            }
+            .languages-grid {
+                display: block; /* Revert to block for print */
+            }
+            .language-card {
+                box-shadow: none;
+                border: none;
+                padding: 0.75rem 0;
+                margin-bottom: 0.75rem;
+                border-bottom: 1px dashed #ddd;
+                background-color: transparent;
+            }
+            .language-card .language-flag {
+                display: none; /* Hide flags in print */
+            }
+            .language-card .item-title {
+                color: #333;
+                font-size: 1rem;
+                margin-bottom: 0.2rem;
+            }
+            .language-card .item-subtitle {
+                color: #555;
+                font-size: 0.9rem;
+            }
+            .education-grid {
+                display: block; /* Revert to block for print */
+            }
+            .education-card {
+                box-shadow: none;
+                border: none;
+                padding: 0.75rem 0;
+                margin-bottom: 0.75rem;
+                border-bottom: 1px dashed #ddd;
+                background-color: transparent;
+            }
+            .education-card .edu-icon {
+                display: none; /* Hide icons for print */
+            }
+            .education-card .edu-title {
+                color: #333;
+                font-size: 1.1rem;
+                margin-bottom: 0.2rem;
+            }
+            .education-card .edu-subtitle {
+                color: #555;
+                font-size: 1.0rem;
+                margin-bottom: 0.2rem;
+            }
+            .education-card .edu-location {
+                color: #666;
+                font-size: 0.9rem;
+            }
+            .miscellaneous-grid {
+                display: block; /* Revert to block for print */
+            }
+            .miscellaneous-card {
+                box-shadow: none;
+                border: none;
+                padding: 0.75rem 0;
+                margin-bottom: 0.75rem;
+                border-bottom: 1px dashed #ddd;
+                background-color: transparent;
+            }
+            .miscellaneous-card .misc-icon {
+                display: none; /* Hide icons for print */
+            }
+            .miscellaneous-card .misc-text {
+                color: #555;
+                font-size: 0.9rem;
+            }
+            footer {
+                padding: 1rem;
+                background-color: #eee; /* Lighter footer for print */
+                color: #555;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="main-nav">
+        <ul>
+            <li><a href="#summary-section">Summary</a></li>
+            <li><a href="#experience-section">Experience</a></li>
+            <li><a href="#education-section">Education</a></li>
+            <li><a href="#skills-section">Skills</a></li>
+            <li><a href="#certifications-section">Certifications</a></li>
+            <li><a href="#languages-section">Languages</a></li>
+            <li><a href="#miscellaneous-section">Miscellaneous</a></li>
+        </ul>
+    </div>
+
+    <div class="main-wrapper">
+        <!-- Introduction Section -->
+        <div class="intro-section section">
+            <img src="file:///Users/freddynavarrete/Desktop/CV%20HTML/IMG_4316.jpg" alt="Freddy Navarrete Profile Picture" class="profile-picture">
+            <h1>Freddy Navarrete</h1>
+            <p class="tagline"><span id="typed-title"></span></p>
+            <section class="contact-info">
+                <p class="mb-2">
+                    <a href="mailto:navarretefreddy@gmail.com" class="contact-item-box"><i class="fas fa-envelope"></i> navarretefreddy@gmail.com</a>
+                </p>
+                <p class="mb-2">
+                    <a href="tel:+4915202490477" class="contact-item-box"><i class="fas fa-phone"></i> +49 15202490477</a>
+                </p>
+                <p class="mb-2">
+                    <span class="contact-item-box"><i class="fas fa-map-marker-alt"></i> Munich, Germany</span>
+                </p>
+                <p>
+                    <a href="https://www.linkedin.com/in/freddy-navarrete" target="_blank" class="contact-item-box"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                </p>
+            </section>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="summary-section section" id="summary-section">
+            <h2>Summary</h2>
+            <ul class="content-list">
+                <li>
+                    <p class="item-description">
+                        Results-oriented professional with an MBA in Digital Marketing Strategy and international experience in CRM, sales, and account management in the e-commerce, tourism/hospitality, and education sectors. Expertise in e-mail marketing, customer experience, A/B testing, and CRM tools (Braze, Salesforce). Skilled in project management, relationship building, and optimising digital sales processes.
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Professional Experience Section -->
+        <div class="experience-section section" id="experience-section">
+            <h2>Professional Experience</h2>
+            <div class="timeline-container">
+                <ul class="content-list">
+                    <!-- Westwing -->
+                    <li class="job-entry westwing-watermark">
+                        <div class="date-range">Aug. 2022 – Mar. 2025</div>
+                        <div class="item-title">Westwing - Munich, Germany</div>
+                        <div class="item-subtitle">CRM Operations Manager</div>
+                        <div class="item-description">
+                            <ul>
+                                <li>Led multi-channel CRM initiatives (e-mail & push via Braze) focused on targeted customer engagement and CLV-driven retention.</li>
+                                <li>Managed daily end-to-end newsletter operations for 11 European markets, ensuring timely campaign execution with 99% delivery accuracy and alignment with brand tone and compliance standards.</li>
+                                <li>Executed advanced audience segmentation and data-driven personalisation.</li>
+                                <li>Optimised CRM campaigns and templates through A/B testing.</li>
+                                <li>Generated performance and behavioural reports by querying large datasets in Snowflake using SQL, driving actionable insights to improve effectiveness.</li>
+                                <li>Collaborated with Product and Data teams to contribute to quarterly strategy planning and maintain GDPR-compliant CRM practices.</li>
+                            </ul>
+                            <h4><i class="fas fa-star"></i> Key Achievements:</h4>
+                            <ul>
+                                <li>Led the technical launch of newsletter and push notification campaigns for Westwing's expansion into the Portuguese market, establishing a scalable CRM framework that was subsequently adopted across 9 new country markets.</li>
+                                <li>Implemented a new CRM automation canvas flow (in Braze) for transactional e-mails and daily newsletters across all Westwing EU markets.</li>
+                            </ul>
+                            <p>**Reason for reorientation:** Position impacted by organisational restructuring.</p>
+                        </div>
+                    </li>
+
+                    <!-- Explorandes -->
+                    <li class="job-entry explorandes-watermark">
+                        <div class="date-range">Aug. 2019 – Jul. 2021</div>
+                        <div class="item-title">Explorandes - Lima, Peru</div>
+                        <div class="item-subtitle">B2C Account Manager & Destination Specialist</div>
+                        <div class="item-description">
+                            <ul>
+                                <li>Managed B2C lead conversion, web sales, and online channels for a top adventure tourism agency in Peru.</li>
+                                <li>Built and managed strong client relationships (U.S. & Europe), creating custom offers and ensuring seamless end-to-end travel experiences.</li>
+                                <li>Implemented and managed CRM tools (Freshsales, Salesforce).</li>
+                            </ul>
+                            <h4><i class="fas fa-star"></i> Key Achievements:</h4>
+                            <ul>
+                                <li>Surpassed quarterly sales goals by 25%+ and retained 90% of client bookings during COVID travel restrictions.</li>
+                                <li>Contributed to customer journey redesign, sales process optimisation and A/B Testing of landing pages.</li>
+                            </ul>
+                            <p>**Reason for reorientation:** Pursuit of a Master's degree in Digital Marketing Strategy in France.</p>
+                        </div>
+                    </li>
+
+                    <!-- Casa Nuestra Boutique Hotel -->
+                    <li class="job-entry casanuestra-watermark">
+                        <div class="date-range">Nov. 2017 – Dec. 2018</div>
+                        <div class="item-title">Casa Nuestra Boutique Hotel - Lima, Peru</div>
+                        <div class="item-subtitle">Operations Manager</div>
+                        <div class="item-description">
+                            <ul>
+                                <li>In charge of client bookings, web sales and online channel distribution.</li>
+                                <li>Managed end-to-end customer service, from sales & inquiry management to arranging on-site services.</li>
+                                <li>Managed day-to-day hotel operations, accounting, purchasing, and service staff.</li>
+                                <li>Worked with third-party booking providers (Booking.com, Expedia, Airbnb, etc.) to monitor channel performance and troubleshoot operational bottlenecks.</li>
+                            </ul>
+                            <h4><i class="fas fa-star"></i> Key Achievements:</h4>
+                            <ul>
+                                <li>Tripadvisor Traveler's Choice Award 2017 and 2018.</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Wake Up Coffee (no specific watermark as no logo provided) -->
+                    <li class="job-entry">
+                        <div class="date-range">Oct. 2015 – Nov. 2017</div>
+                        <div class="item-title">Wake Up Coffee - Lima, Peru</div>
+                        <div class="item-subtitle">Operations Manager</div>
+                        <div class="item-description">
+                            <ul>
+                                <li>Oversaw purchasing, supplier and inventory management, cash handling.</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Oxford English School (no specific watermark as no logo provided) -->
+                    <li class="job-entry">
+                        <div class="date-range">Jun. 2014 – Jun. 2015</div>
+                        <div class="item-title">Oxford English School - Manta, Ecuador</div>
+                        <div class="item-subtitle">Sales Coordinator</div>
+                        <div class="item-description">
+                            <ul>
+                                <li>Managed sales of English classes and software packs, student services and social media marketing.</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- 4YOU2 English School (no specific watermark as no logo provided) -->
+                    <li class="job-entry">
+                        <div class="date-range">Jan. 2013 – May 2014</div>
+                        <div class="item-title">4YOU2 English School - São Paulo, Brazil</div>
+                        <div class="item-subtitle">Program Coordinator</div>
+                        <div class="item-description">
+                            <ul>
+                                <li>Led a team of international English teachers, coordinated educational content design.</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Travel Coordinator & Guide (no specific watermark as no logo provided) -->
+                    <li class="job-entry">
+                        <div class="date-range">2009 – 2013</div>
+                        <div class="item-title">Various Companies - Ecuador</div>
+                        <div class="item-subtitle">Travel Coordinator & Guide</div>
+                        <div class="item-description">
+                            <ul>
+                                <li>Developed and optimized trip itineraries and guided tours across Ecuador for several local companies, enhancing guest experience and operational efficiency.</li>
+                                <li>Led seasonal Humpback Whale Watching Tours.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Education Section -->
+        <div class="education-section section" id="education-section">
+            <h2>Education</h2>
+            <div class="education-grid">
+                <div class="education-card" data-logo-url="https://en.ad-education.com/wp-content/uploads/sites/2/2024/12/Logo-EMLV-2024-fond-bleu.jpg">
+                    <div class="edu-logo-overlay"></div>
+                    <div class="card-content">
+                        <i class="fas fa-graduation-cap edu-icon"></i> <!-- Graduation cap icon -->
+                        <div class="edu-date-range">2021-2022</div>
+                        <div class="edu-title">MBA Digital Marketing Strategy</div>
+                        <div class="edu-subtitle">EMLV - École de Management Leonard de Vinci</div>
+                        <div class="edu-location">Paris, France</div>
+                    </div>
+                </div>
+                <div class="education-card" data-logo-url="https://images.seeklogo.com/logo-png/31/1/uleam-logo-png_seeklogo-315386.png">
+                    <div class="edu-logo-overlay"></div>
+                    <div class="card-content">
+                        <i class="fas fa-university edu-icon"></i> <!-- University icon -->
+                        <div class="edu-date-range">2008-2012</div>
+                        <div class="edu-title">B.A. in Tourism & Travel Management</div>
+                        <div class="edu-subtitle">ULEAM University</div>
+                        <div class="edu-location">Manta, Ecuador</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- IT Skills & Tools Section -->
+        <div class="skills-section section" id="skills-section">
+            <h2>IT Skills & Tools</h2>
+            <div class="skills-grid">
+                <div class="skill-category-block">
+                    <div class="category-title">Software & CRM</div>
+                    <ul class="skill-item-list">
+                        <li data-level="5">
+                            <div class="skill-info">
+                                <i class="fas fa-file-word skill-icon"></i>
+                                <span class="skill-name">Microsoft Office</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level-text="5/5"></div>
+                            </div>
+                        </li>
+                        <li data-level="5">
+                            <div class="skill-info">
+                                <i class="fas fa-cloud skill-icon"></i>
+                                <span class="skill-name">Google Workspace</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level-text="5/5"></div>
+                            </div>
+                        </li>
+                        <li data-level="4">
+                            <div class="skill-info">
+                                <i class="fas fa-envelope-open-text skill-icon"></i>
+                                <span class="skill-name">BRAZE</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level-text="4/5"></div>
+                            </div>
+                        </li>
+                        <li data-level="4">
+                            <div class="skill-info">
+                                <i class="fas fa-people-group skill-icon"></i>
+                                <span class="skill-name">Atlassian Toolkit</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level-text="4/5"></div>
+                            </div>
+                        </li>
+                        <li data-level="4">
+                            <div class="skill-info">
+                                <i class="fas fa-mail-bulk skill-icon"></i>
+                                <span class="skill-name">Mapp-e-mail serv</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level-text="4/5"></div>
+                            </div>
+                        </li>
+                        <li data-level="4">
+                            <div class="skill-info">
+                                <i class="fas fa-handshake skill-icon"></i>
+                                <span class="skill-name">Salesforce</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level-text="4/5"></div>
+                            </div>
+                        </li>
+                        <li data-level="3">
+                            <div class="skill-info">
+                                <i class="fas fa-chart-bar skill-icon"></i>
+                                <span class="skill-name">Tableau</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level-text="3/5"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="skill-category-block">
+                    <div class="category-title">Data & Programming</div>
+                    <ul class="skill-item-list">
+                        <li data-level="3">
+                            <div class="skill-info">
+                                <i class="fas fa-code skill-icon"></i>
+                                <span class="skill-name">Python</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level-text="3/5"></div>
+                            </div>
+                        </li>
+                        <li data-level="3">
+                            <div class="skill-info">
+                                <i class="fas fa-chart-line skill-icon"></i>
+                                <span class="skill-name">R-studio</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level-text="3/5"></div>
+                            </div>
+                        </li>
+                        <li data-level="2">
+                            <div class="skill-info">
+                                <i class="fas fa-database skill-icon"></i>
+                                <span class="skill-name">SQL</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level-text="2/5"></div>
+                            </div>
+                        </li>
+                        <li data-level="2">
+                            <div class="skill-info">
+                                <i class="fas fa-snowflake skill-icon"></i>
+                                <span class="skill-name">Snowflake DWH</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level-text="2/5"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trainings & Certifications Section -->
+        <div class="certifications-section section" id="certifications-section">
+            <h2>Trainings & Certifications</h2>
+            <div class="certifications-grid">
+                <div class="certification-card" data-logo-url="https://miro.medium.com/v2/resize:fit:1400/1*-ExxDAPl4rciaENKd8QSBw.png">
+                    <div class="cert-logo-overlay"></div>
+                    <div class="card-content">
+                        <div class="cert-title"><a href="https://skillshop.credential.net/7007aa93-0ef5-41e2-844c-c1f3048666ce#acc.NCVdieEG" target="_blank">Google Analytics Certificate</a></div>
+                        <div class="cert-date">2025</div>
+                    </div>
+                </div>
+                <div class="certification-card" data-logo-url="https://logos-world.net/wp-content/uploads/2022/05/Google-AdWords-Logo.png">
+                    <div class="cert-logo-overlay"></div>
+                    <div class="card-content">
+                        <div class="cert-title"><a href="https://skillshop.credential.net/cfa2aa7d-f19e-42bf-bb10-607daa4ef6c4#acc.o1PzwK9g" target="_blank">Google Ads Search Certificate</a></div>
+                        <div class="cert-date">2025</div>
+                    </div>
+                </div>
+                <div class="certification-card" data-logo-url="https://media.licdn.com/dms/image/v2/C560BAQHaVYd13rRz3A/company-logo_200_200/company-logo_200_200/0/1638831590218/linkedin_logo?e=1756944000&v=beta&t=3YsPxA4uKbrnwqHYDdPfom7jRSTAnKMOF0eoxeM4WX4">
+                    <div class="cert-logo-overlay"></div>
+                    <div class="card-content">
+                        <div class="cert-title">LinkedIn Advance SEO</div>
+                        <div class="cert-date">2022</div>
+                    </div>
+                </div>
+                <div class="certification-card" data-logo-url="https://media.licdn.com/dms/image/v2/D560BAQFGt4XAU9bF5w/company-logo_200_200/company-logo_200_200/0/1719518128249/hubspot_academy_logo?e=1756944000&v=beta&t=1DhMRmKHJoeI6qT6_7FKX-RpIx5rQpHJmw9uGqcVxpg">
+                    <div class="cert-logo-overlay"></div>
+                    <div class="card-content">
+                        <div class="cert-title"><a href="https://app-eu1.hubspot.com/academy/achievements/h5jmqs6z/en/1/freddy-navarrete/seo" target="_blank">Hubspot Academy SEO</a></div>
+                        <div class="cert-date">2025</div>
+                    </div>
+                </div>
+                <div class="certification-card" data-logo-url="https://cdn.prod.website-files.com/65adf1a878ae17b8b4647663/65b74534cebba152b5263827_6481ebb4393bc80a1b8f7c9d_apple-ads.svg">
+                    <div class="cert-logo-overlay"></div>
+                    <div class="card-content">
+                        <div class="cert-title"><a href="https://certification-ads.apple.com/certificate/jpYdliNt6G" target="_blank">Apple Search Ads Certificate</a></div>
+                        <div class="cert-date">2025</div>
+                    </div>
+                </div>
+                <div class="certification-card" data-logo-url="https://media.licdn.com/dms/image/v2/C4E0BAQEezdLAylLIcw/company-logo_200_200/company-logo_200_200/0/1656678733945/hotjar_logo?e=1756944000&v=beta&t=WGqHaZ1FvEtg8J4wMXv6xMjgcNiTUp3b2375KBLXx-A">
+                    <div class="cert-logo-overlay"></div>
+                    <div class="card-content">
+                        <div class="cert-title"><a href="https://verify.skilljar.com/c/sjfxfr4x2u5p" target="_blank">HotJar: User experience optimisation</a></div>
+                        <div class="cert-date">N/A</div> <!-- Assuming no date provided -->
+                    </div>
+                </div>
+                <div class="certification-card" data-logo-url="https://1000logos.net/wp-content/uploads/2024/01/UC-Davis-logo.jpg">
+                    <div class="cert-logo-overlay"></div>
+                    <div class="card-content">
+                        <div class="cert-title"><a href="https://www.coursera.org/account/accomplishments/verify/TOO6JNEIZZN" target="_blank">Big Data, Artificial Intelligence, and Ethics</a></div>
+                        <div class="cert-subtitle">Certified by University of California, Davis</div>
+                        <div class="cert-date">2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Languages Section -->
+        <div class="languages-section section" id="languages-section">
+            <h2>Languages</h2>
+            <div class="languages-grid">
+                <div class="language-card">
+                    <img src="https://flagcdn.com/w160/es.png" alt="Spanish Flag" class="language-flag">
+                    <div class="item-title">Spanish</div>
+                    <div class="item-subtitle">Native</div>
+                </div>
+                <div class="language-card">
+                    <img src="https://flagcdn.com/w160/gb.png" alt="English Flag" class="language-flag">
+                    <div class="item-title">English</div>
+                    <div class="item-subtitle">Fluent</div>
+                </div>
+                <div class="language-card">
+                    <img src="https://flagcdn.com/w160/fr.png" alt="French Flag" class="language-flag">
+                    <div class="item-title">French</div>
+                    <div class="item-subtitle">Professional Working Proficiency</div>
+                </div>
+                <div class="language-card">
+                    <img src="https://flagcdn.com/w160/br.png" alt="Portuguese Flag" class="language-flag">
+                    <div class="item-title">Portuguese</div>
+                    <div class="item-subtitle">Conversational</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Miscellaneous Section -->
+        <div class="miscellaneous-section section" id="miscellaneous-section">
+            <h2>Miscellaneous</h2>
+            <div class="miscellaneous-grid">
+                <div class="miscellaneous-card">
+                    <i class="fas fa-globe misc-icon"></i>
+                    <div class="misc-text">Nationality: Ecuadorian and French</div>
+                </div>
+                <div class="miscellaneous-card">
+                    <i class="fas fa-users misc-icon"></i>
+                    <div class="misc-text">AIESEC Alumni, former VP of AIESEC Manta's International Exchange Program (2006-2011)</div>
+                </div>
+                <div class="miscellaneous-card">
+                    <i class="fas fa-music misc-icon"></i>
+                    <div class="misc-text">Music: Founded a music teaching company and home recording studio in Peru, with 15+ years of guitar-playing experience (Rock, Blues, and Funk).</div>
+                </div>
+                <div class="miscellaneous-card">
+                    <i class="fas fa-person-biking misc-icon"></i>
+                    <div class="misc-text">Sports: Gravel biking, Mountain biking (MTB), running, and trekking.</div>
+                </div>
+                <div class="miscellaneous-card">
+                    <i class="fas fa-plane-departure misc-icon"></i>
+                    <div class="misc-text">Enthusiastic traveler. Lived and worked in Ecuador, Brazil, Peru, France, and based in Munich since 2022.</div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Handcrafted by Freddy Navarrete</p>
+            <div class="social-links mt-2">
+                <a href="mailto:navarretefreddy@gmail.com"><i class="fa fa-send"></i></a>
+                <a href="https://www.linkedin.com/in/freddy-navarrete" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Typed.js CDN -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Typed.js for the tagline
+            var typed = new Typed('#typed-title', {
+                strings: [
+                    "CRM & E-mail Marketing Specialist",
+                    "Digital Marketing Strategist",
+                    "Results-Oriented Professional"
+                ],
+                typeSpeed: 50,
+                backSpeed: 25,
+                backDelay: 1500,
+                loop: true,
+                showCursor: true,
+                cursorChar: '|',
+            });
+
+            // Intersection Observer for scroll-reveal animations
+            const sections = document.querySelectorAll('.section');
+
+            const observerOptions = {
+                root: null, // viewport as the root
+                rootMargin: '0px',
+                threshold: 0.1 // 10% of the section must be visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Stop observing once visible
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Active class for nav links based on scroll position
+            const navLinks = document.querySelectorAll('.main-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionRect = section.getBoundingClientRect();
+                    const offset = 70; // Height of the fixed nav bar
+                    if (sectionRect.top <= offset && sectionRect.bottom > offset) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Skill bar animation and level display
+            const skillItems = document.querySelectorAll('.skill-item-list li');
+            skillItems.forEach(item => {
+                const level = parseInt(item.dataset.level);
+                const fillElement = item.querySelector('.skill-level-fill');
+                if (fillElement) {
+                    // Calculate width based on 5 levels, e.g., level 5 = 100%, level 1 = 20%
+                    const widthPercentage = (level / 5) * 100;
+                    fillElement.style.width = widthPercentage + '%';
+                }
+            });
+
+            // Certification card logo loading
+            const certCards = document.querySelectorAll('.certification-card');
+            certCards.forEach(card => {
+                const logoUrl = card.dataset.logoUrl;
+                const logoOverlay = card.querySelector('.cert-logo-overlay');
+                if (logoOverlay && logoUrl) {
+                    logoOverlay.style.backgroundImage = `url('${logoUrl}')`;
+                }
+            });
+
+            // Education card logo loading
+            const eduCards = document.querySelectorAll('.education-card');
+            eduCards.forEach(card => {
+                const logoUrl = card.dataset.logoUrl;
+                const logoOverlay = card.querySelector('.edu-logo-overlay');
+                if (logoOverlay && logoUrl) {
+                    logoOverlay.style.backgroundImage = `url('${logoUrl}')`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
