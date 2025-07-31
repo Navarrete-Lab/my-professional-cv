@@ -178,11 +178,11 @@ document.addEventListener('DOMContentLoaded', function() {
         strings: [
             "CRM & E-mail Marketing Specialist",
             "Digital Marketing Strategist",
-            "Results-Oriented Professional"
+            "E-commerce"
         ],
-        typeSpeed: 50,
-        backSpeed: 25,
-        backDelay: 1500,
+        typeSpeed: 60,
+        backSpeed: 30,
+        backDelay: 2000,
         loop: true,
         showCursor: true,
         cursorChar: '|',
